@@ -1,0 +1,117 @@
+<ion-view class="login-register-bg">
+	<ion-content class="has-footer container">
+		<div class="text-center app-logo">
+			<img class="full-img" src="img/logo-2.png" />
+		</div>
+		<div class="heading-boarder"></div>
+		<div class="text-center">
+			<h3 class="uppercase">sign up</h3>
+		</div>
+		<form class="main-form" name="signupForm" novalidate ng-submit="signup(signupData, signupForm.$invalid)">
+			<div class="row no-padding">
+				<div class="col no-padding">
+					<input type="text" placeholder="FIRST NAME" name="firstname" ng-model="signupData.firstname" required />
+					<p class="validation-error" ng-show="submitted && signupForm.firstname.$error.required">First Name is required.</p>
+				</div>
+			</div>
+			<div class="row no-padding">
+				<div class="col no-padding">
+					<input type="text" placeholder="GAME NAME" name="gamename" ng-model="signupData.gamename" required />
+					<p class="validation-error" ng-show="submitted && signupForm.gamename.$error.required">Game Name is required.</p>
+				</div>
+			</div>
+			<div class="row no-padding">
+				<div class="col no-padding">
+					<input type="text" placeholder="LAST NAME" name="lastname" ng-model="signupData.lastname" required />
+					<p class="validation-error" ng-show="submitted && signupForm.lastname.$error.required">Last Name is required.</p>
+				</div>
+			</div>
+			<div class="row no-padding">
+				<div class="col no-padding">
+					<input type="email" placeholder="EMAIL" name="email" ng-model="signupData.email" required />
+					<p class="validation-error" ng-show="submitted && signupForm.email.$error.required">Email is required.</p>
+					<p class="validation-error" ng-show="submitted && !signupForm.email.$error.required && signupForm.email.$error.email">Not valid email address.</p>
+				</div>
+			</div>
+			<div class="row no-padding">
+				<div class="col no-padding">
+					<input type="number" placeholder="MOBILE" name="mobile" ng-model="signupData.mobile" required />
+					<p class="validation-error" ng-show="submitted && signupForm.mobile.$error.required">Mobile number is required.</p>
+				</div>
+			</div>
+			<div class="row no-padding">
+				<div class="col no-padding">
+					<input type="password" placeholder="PASSWORD" name="password" ng-model="signupData.password" ng-minlength="6" required />
+					<p class="validation-error" ng-show="submitted && signupForm.password.$error.required">Password is required.</p>
+					<p class="validation-error" ng-show="!submitted && signupForm.password.$error.required && submitted && signupForm.password.$error.minlength">Password must be longer than 6 characters.</p>
+				</div>
+			</div>
+			<div class="row no-padding">
+				<div class="col no-padding">
+					<input type="password" placeholder="CONFIRM PASSWORD" name="password" ng-minlength="6" password-verify="{{submitted && signupForm.password}}" required />
+					<p class="validation-error" ng-show="submitted && signupForm.confirmPassword.$error.required">Confirm Password is required.</p>
+					<p class="validation-error" ng-show="!submitted && signupForm.confirmPassword.$error.required && submitted && signupForm.confirmPassword.$error.minlength">Confirm Password must be longer than 6 characters.</p>
+					<p class="validation-error" ng-show="!submitted && signupForm.confirmPassword.$error.required && !submitted && signupForm.confirmPassword.$error.minlength && submitted && signupForm.confirmPassword.$error.passwordVerify">Confirm Password not matched.</p>
+				</div>
+			</div>
+			<div class="button-section">
+				<button class="button button-full button-green uppercase" ng-click="signup(signupData, signupForm.$invalid)">
+					Signup
+				</button>
+			</div>
+		</form>
+		<div class="devider-row">
+			<p class="text-center">
+				<span class="text-round">OR</span>
+			</p>
+		</div>
+		<div class="row two-button-row no-padding">
+			<div class="col col-50 first-col no-padding">
+				<div class="row button-row fb-button small-button no-padding">
+					<div class="col col-20 image-col text-center no-padding">
+						<img src="img/icon-fb-white.png" />
+					</div>
+					<div class="col text-center text-col no-padding">
+						<p class="uppercase">Sign in with Facebook</p>
+					</div>
+				</div>
+			</div>
+			<div class="col col-50 no-padding">
+				<div class="row button-row gplus-button small-button no-padding">
+					<div class="col col-20 image-col text-center no-padding">
+						<img src="img/icon-gplus-white.png" />
+					</div>
+					<div class="col text-center text-col no-padding">
+						<p class="uppercase">Sign in with GOOGLE+</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row two-button-row no-padding">
+			<div class="col col-50 first-col no-padding">
+				<div class="row button-row twitch-button small-button no-padding">
+					<div class="col col-20 image-col text-center no-padding">
+						<img src="img/icon-twitch-white.png" />
+					</div>
+					<div class="col text-center text-col no-padding">
+						<p class="uppercase">Sign in with TWITCH</p>
+					</div>
+				</div>
+			</div>
+			<div class="col col-50 no-padding">
+				<div class="row button-row steam-button small-button no-padding">
+					<div class="col col-20 image-col text-center no-padding">
+						<img src="img/icon-steam-white.png" />
+					</div>
+					<div class="col text-center text-col no-padding">
+						<p class="uppercase">Sign in with Steam</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</ion-content>
+	<div class="bar bar-footer bar-transparent hide-on-keyboard-open" ng-click="goTo('app.login', {})">
+		<div class="title">Already a Member? Sign in</div>
+	</div>
+</ion-view>

@@ -1,0 +1,95 @@
+<ion-view view-title="STREAMS/VIDEOS">
+	<div class="bar bar-subheader">
+		<ul class="sub-header-actions">
+			<li class="action" style="padding: 0;">
+				<p class="text-center"><span ng-class="videoView.view == 'trending' ? 'active' : ''" ng-click="toggleView('trending')">Trending</span> | <span ng-class="videoView.view == 'top-10-goals' ? 'active' : ''" ng-click="toggleView('top-10-goals')">Top 10 Goals</span> | <span ng-class="videoView.view == 'top-10-killstreak' ? 'active' : ''" ng-click="toggleView('top-10-killstreak')">Top 10 Killstreak</span></p>
+			</li>
+			<!-- <li class="action pull-right" style="padding: 0;">
+				<select ng-model="pagination.searchAlphabet" ng-options="alphabet for alphabet in searchAlphabetsOptions" ng-change="search()">
+					<option value="">By Alphabet</option>
+				</select>
+			</li> -->
+		</ul>
+	</div>
+	<ion-content class="has-big-subheader has-tabs has-custom-tab main-content profile-content">
+		<div class="margin">
+			<ul class="button-tab small-tab text-center">
+				<li class="tab-button" ng-repeat="platform in platforms" ng-class="pagination.platform == platform.id ? 'active' : ''" ng-click="setPlatform(platform)">
+					{{platform.text}}
+				</li>
+			</ul>
+		</div>
+		<div class="container">
+			<div class="status-section margin friend-list">
+				<div class="margin">
+					<div class="item item-input-inset seach-box">
+						<label class="item-input-wrapper">
+							<input type="text" placeholder="Search Events" ng-model="pagination.videoname" />
+						</label>
+						<button class="button button-small button-icon icon ion-ios-search-strong" ng-click="search()"></button>
+					</div>
+				</div>
+				<div class="margin" ng-repeat="video in videos" ng-if="video.VideoEmbedLink">
+					<div class="item item-friends item-text-wrap">
+						<div class="row no-padding">
+							<div class="col col-10 no-padding profile-img">
+								<img src="img/friend-img.jpg" style="width: 40px;" />
+							</div>
+							<div class="col no-padding profile-details" style="padding-left: 10px; padding-top: 8px;">
+								<p class="name uppercase" style="line-height: 10px;">{{video.VideoTitle}}</p>
+								<p>{{video.VideoDescription | cut:true:40:' ...'}}</p>
+							</div>
+						</div>
+					</div>
+					<div class="video-container">
+						<iframe ng-src="{{'https://www.youtube.com/embed/' + video.VideoEmbedLink}}" frameborder="0" width="560" height="315" allowfullscreen="allowfullscreen" mozallowfullscreen="mozallowfullscreen" msallowfullscreen="msallowfullscreen" oallowfullscreen="oallowfullscreen" webkitallowfullscreen="webkitallowfullscreen"></iframe>
+					</div>
+					<div class="margin">
+						<ul class="card-action" style="background: none; color: #fff;">
+							<li style="font-size: 10px; padding-right: 5px;">
+								<img src="img/icon-like.png" /> 15 Likes
+							</li>
+							<li style="font-size: 10px; padding-right: 5px;">
+								<img src="img/icon-comment.png" /> 2 Comment
+							</li>
+							<li style="font-size: 10px; padding-right: 5px;">
+								<img src="img/icon-share.png" /> Share
+							</li>
+							<li style="font-size: 10px; padding-right: 5px;">
+								<img src="img/icon-pin.png" /> Pin
+							</li>
+						</ul>
+					</div>
+				</div>
+				<ion-infinite-scroll on-infinite="index(videoView.view)" distance="5%" ng-if="!noMoreItemsAvailable"></ion-infinite-scroll>
+				<div class="text-center" ng-if="noMoreItemsAvailable">
+					No more videos to show
+				</div>
+			</div>
+		</div>
+	</ion-content>
+	<div class="tabs tabs-icon-top footer-tab">
+		<a nav-transition="none" class="tab-item" href="#/menu/news-main">
+			<i class="icon tab-icon-newsfeed"></i>
+			NEWSFEED
+		</a>
+		<a nav-transition="none" class="tab-item" href="#/menu/explore">
+			<i class="icon tab-icon-explore"></i>
+			EXPLORE
+		</a>
+		<div nav-transition="none" class="tab-item" ng-click="launchChatNow()">
+			<i class="icon tab-icon-chat"></i>
+			CHAT
+			<!-- <span class="badge badge-stable header-badge">10</span> -->
+		</div>
+		<a nav-transition="none" class="tab-item" href="#/menu/notifications">
+			<i class="icon tab-icon-notifications"></i>
+			NOTIFICATIONS
+			<span class="badge badge-stable header-badge"></span>
+		</a>
+		<a nav-transition="none" class="tab-item" href="#/menu/profile/{{userInfo.userId}}">
+			<i class="icon tab-icon-profile"></i>
+			PROFILE
+		</a>
+	</div>
+</ion-view>

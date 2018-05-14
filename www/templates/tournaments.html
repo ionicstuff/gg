@@ -1,0 +1,97 @@
+<ion-view view-title="TOURNAMENTS">
+	<div class="bar bar-subheader">
+		<ul class="sub-header-actions">
+			<li class="action" style="line-height: 40px;">
+				<p class="text-center"><span class="">Trending Tournaments</span> | <span ng-click="goTo('menu.add-tournament', {})">Create Tournaments</span></p>
+			</li>
+			<!-- <li class="action pull-right" style="line-height: 40px;">
+				<select ng-model="pagination.searchAlphabet" ng-options="alphabet for alphabet in searchAlphabetsOptions" ng-change="search()">
+					<option value="">By Alphabet</option>
+				</select>
+			</li> -->
+		</ul>
+	</div>
+	<ion-content class="has-big-subheader has-tabs has-custom-tab main-content profile-content">
+		<div class="margin">
+			<ul class="button-tab small-tab text-center">
+				<li class="tab-button" ng-repeat="platform in platforms" ng-class="pagination.platform == platform.id ? 'active' : ''" ng-click="setPlatform(platform)">
+					{{platform.text}}
+				</li>
+			</ul>
+		</div>
+		<div class="margin">
+			<ul class="button-tab text-center">
+				<li class="tab-button dark-button" ng-class="pagination.tournamenttype == '0' ? 'active' : ''" ng-click="pagination.tournamenttype = '0'; search()">
+					PUBLIC
+				</li>
+				<li class="tab-button dark-button" ng-class="pagination.tournamenttype == '1' ? 'active' : ''" ng-click="pagination.tournamenttype = '1'; search()">
+					PRIVATE
+				</li>
+			</ul>
+		</div>
+		<div class="container">
+			<div class="status-section margin friend-list">
+				<div class="margin">
+					<div class="item item-input-inset seach-box">
+						<label class="item-input-wrapper">
+							<input type="text" placeholder="Search Community" ng-model="pagination.tournamentname" />
+						</label>
+						<button class="button button-small button-icon icon ion-ios-search-strong" ng-click="search()"></button>
+					</div>
+				</div>
+				<div class="margin">
+					<ul vertilize-container class="event-grid-row">
+						<li class="grid" ng-repeat="tournament in tournaments">
+							<div class="item item-image grid-top-bg-image" lazy-img='{{imgBasePath + tournament.TournamentCoverImage}}' style="background-size: cover; background-color: #000; background-position: center;" ng-click="goTo('menu.tournament-view', {tournamentId: tournament.TournamentID})">
+							</div>
+							<div class="item text-center event-info">
+								<h3>{{tournament.TournamentTitle}}</h3>
+								<p>Starts {{tournament.TournamentDate | date: 'MMM'}} {{tournament.TournamentDate | dateSuffix}}, {{tournament.TournamentDate | date: 'yyyy'}}</p>
+								<p class="text-center">@ {{tournament.TournamentDate + 'T' + tournament.TournamentStartTime | date:'hh:mm a'}} EST</p>
+								<div class="event-devider"></div>
+								<ul class="event-summery">
+									<li><img class="bullet" src="img/icon-bullet.png" /> Tournament Size: <strong>{{tournament.TournamentNumberOfTeams}} Teams</strong></li>
+									<li><img class="bullet" src="img/icon-bullet.png" /> Hosted by: <strong>Mindbender</strong></li>
+									<li><img class="bullet" src="img/icon-bullet.png" /> Host Ratings: <i class="icon ion-star"></i> <i class="icon ion-star"></i> <i class="icon ion-star"></i> <i class="icon ion-star"></i> <i class="icon ion-star"></i></li>
+								</ul>
+								<div class="margin">
+									<button class="button button-small button-custom" ng-click="goTo('menu.tournament-view', {tournamentId: '7'})">
+										VIEW TOURNAMENT
+									</button>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<ion-infinite-scroll on-infinite="index()" distance="5%" ng-if="!noMoreItemsAvailable"></ion-infinite-scroll>
+				<div class="text-center" ng-if="noMoreItemsAvailable">
+					No more tournaments to show
+				</div>
+			</div>
+		</div>
+	</ion-content>
+	<div class="tabs tabs-icon-top footer-tab">
+		<a nav-transition="none" class="tab-item" href="#/menu/news-main">
+			<i class="icon tab-icon-newsfeed"></i>
+			NEWSFEED
+		</a>
+		<a nav-transition="none" class="tab-item" href="#/menu/explore">
+			<i class="icon tab-icon-explore"></i>
+			EXPLORE
+		</a>
+		<div nav-transition="none" class="tab-item" ng-click="launchChatNow()">
+			<i class="icon tab-icon-chat"></i>
+			CHAT
+			<!-- <span class="badge badge-stable header-badge">10</span> -->
+		</div>
+		<a nav-transition="none" class="tab-item" href="#/menu/notifications">
+			<i class="icon tab-icon-notifications"></i>
+			NOTIFICATIONS
+			<span class="badge badge-stable header-badge"></span>
+		</a>
+		<a nav-transition="none" class="tab-item" href="#/menu/profile/{{userInfo.userId}}">
+			<i class="icon tab-icon-profile"></i>
+			PROFILE
+		</a>
+	</div>
+</ion-view>

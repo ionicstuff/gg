@@ -1,0 +1,78 @@
+<ion-view view-title="NEWS">
+	<div class="bar bar-subheader">
+		<div class="row no-padding">
+			<div class="col col-100 no-padding follow-info">
+				<p class="text-center" style="font-size: 12px;"><span ng-class="!pagination.platform ? 'active' : ''" ng-click="changePatform(null)">TRENDING</span> | <span ng-class="pagination.platform == '1' ? 'active' : ''" ng-click="changePatform(1)">PC</span> | <span ng-class="pagination.platform == '2' ? 'active' : ''" ng-click="changePatform(2)">PS</span> | <span ng-class="pagination.platform == '3' ? 'active' : ''" ng-click="changePatform(3)">XBOX</span> | <span ng-class="pagination.platform == '4' ? 'active' : ''" ng-click="changePatform(4)">NINTENDO</span> | <span ng-class="pagination.platform == '5' ? 'active' : ''" ng-click="changePatform(5)">MOBILE</span> | <span ng-class="pagination.platform == '6' ? 'active' : ''" ng-click="changePatform(6)">VR</span></p>
+			</div>
+		</div>
+	</div>
+	<ion-content class="has-big-subheader has-tabs has-custom-tab main-content profile-content">
+		<div class="container">
+			<div class="margin">
+				<ul class="button-tab dark-tab text-center">
+					<li class="tab-button active">
+						<img src="img/icon-button-news-active.png" /> NEWS
+					</li>
+					<li class="tab-button" ng-click="goTo('menu.news-global', {})">
+						<img src="img/icon-button-global.png" /> GLOBAL
+					</li>
+					<li class="tab-button" ng-click="goTo('menu.news-friends', {})">
+						<img class="extra-big" src="img/icon-button-friends.png" /> FRIENDS
+					</li>
+				</ul>
+			</div>
+			<div class="margin">
+				<div class="header-text text-center">
+					<h4 class="text-white">FEATURED NEWS ARTICLES</h4>
+					<button class="button button-clear button-image">
+						<img src="img/icon-unknown.png" />
+					</button>
+				</div>
+			</div>
+		</div>
+		<ion-slide-box class="news-slider" auto-play="true"  does-continue="true" slide-interval="5000" delegate-handle="news-slider">
+			<ion-slide ng-repeat="image in sliderImages" class="news-slider">
+				<div class="item item-image no-border">
+					<img src='img/loading-img.gif' lazy-img='{{imgBasePath + image.largeimage}}' />
+				</div>
+			</ion-slide>
+		</ion-slide-box>
+		<div class="container">
+			<div class="margin list-with-thumb">
+				<div class="item item-text-wrap item-thumbnail-left margin" ng-repeat="item in items" ng-click="goTo('menu.news-main-detail', {newsId: item.NewsFeedID})">
+					<img src="{{item.NewsfeedImage}}" />
+					<h2 class="uppercase" style="font-size: 14px; text-transform: capitalize;">{{item.NewsfeedTitle}}</h2>
+					<p class="desc-2">{{item.NewsfeedDescription | cut:true:80:' ...'}}</p>
+				</div>
+				<ion-infinite-scroll on-infinite="index()" distance="5%" ng-if="!noMoreItemsAvailable"></ion-infinite-scroll>
+				<div class="text-center" ng-if="noMoreItemsAvailable">
+					No more news to show
+				</div>
+			</div>
+		</div>
+	</ion-content>
+	<div class="tabs tabs-icon-top footer-tab">
+		<a nav-transition="none" class="tab-item active" href="#/menu/news-main">
+			<i class="icon tab-icon-newsfeed"></i>
+			NEWSFEED
+		</a>
+		<a nav-transition="none" class="tab-item" href="#/menu/explore">
+			<i class="icon tab-icon-explore"></i>
+			EXPLORE
+		</a>
+		<div nav-transition="none" class="tab-item" ng-click="launchChatNow()">
+			<i class="icon tab-icon-chat"></i>
+			CHAT
+			<!-- <span class="badge badge-stable header-badge">10</span> -->
+		</div>
+		<a nav-transition="none" class="tab-item" href="#/menu/notifications">
+			<i class="icon tab-icon-notifications"></i>
+			NOTIFICATIONS
+			<span class="badge badge-stable header-badge"></span>
+		</a>
+		<a nav-transition="none" class="tab-item" href="#/menu/profile/{{userInfo.userId}}">
+			<i class="icon tab-icon-profile"></i>
+			PROFILE
+		</a>
+	</div>
+</ion-view>

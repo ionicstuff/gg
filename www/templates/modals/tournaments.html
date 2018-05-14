@@ -1,0 +1,15 @@
+<ion-modal-view class="widget-modal">
+	<ion-header-bar align-title="center">
+		<p class="title">TOURNAMENTS</p>
+		<div class="buttons">
+			<button class="button button-clear button-icon icon ion-ios-close-empty" ng-click="closeTournament()"></button>
+		</div>
+	</ion-header-bar>
+	<ion-content>
+		<div class="margin" ng-repeat="tournament in trendingTournaments">
+			<div class="item item-image">
+				<img src='img/loading-img.gif' lazy-img="{{imgBasePath + 'tournaments/large/' + tournament.TournamentCoverImage}}" />
+			</div>
+		</div>
+	</ion-content>
+</ion-modal-view>

@@ -1,0 +1,76 @@
+<ion-view view-title="PROFILE">
+	<div class="bar bar-subheader">
+		<button class="button icon-left ion-android-arrow-back button-clear button-custom" ng-click="goBack()">Back</button>
+	</div>
+	<ion-content class="has-big-subheader has-tabs has-custom-tab main-content profile-content">
+		<div ng-controller="UserImagesCtrl">
+			<div class="header-img" style="background: url('{{imgBasePath + userData.UserCoverImage}}') center no-repeat; background-size: cover;">
+				<div class="edit-cover-image-button" ng-click="selectImage('UserCoverImage', 'update_coverpic', 900, 300)" ng-if="userIds.userId == userIds.profile_id">
+					<button class="button button-green button-round">
+						<img src="img/icon-camera.png" />
+					</button>
+					<span>UPDATE COVER IMAGE</span>
+				</div>
+				<div class="user-img" style="background: url('{{imgBasePath + userData.UserProfileImage}}') no-repeat; background-size: cover;">
+					<button class="button button-green button-round edit-profile-pic-button" ng-click="selectImage('UserProfileImage', 'update_profilepic', 500, 500)" ng-if="userIds.userId == userIds.profile_id">
+						<img src="img/icon-camera.png" />
+					</button>
+				</div>
+			</div>
+		</div>
+
+		<div class="container">
+			<div class="accordion status-section margin">
+				<div class="item item-divider item-title text-left">
+					<p>LIKED GAMES ({{games.length}})</p>
+				</div>
+			</div>
+			<div class="margin friend-list" ng-repeat="game in games">
+				<div class="item item-image" ng-click="goTo('menu.game-view', {gameId: game.GameID})">
+					<img src='img/loading-img.gif' lazy-img='{{imgBasePath + game.GameCoverImage}}' />
+				</div>
+				<div class="item item-friends item-text-wrap">
+					<div class="row no-padding">
+						<div class="col col-10 no-padding profile-img round-img" style="background: url({{imgBasePath + game.GameLogo}}) no-repeat center; background-size: cover;">
+						</div>
+						<div class="col col-50 no-padding profile-details">
+							<p class="name uppercase" style="line-height: 10px;">{{game.GameTitle}}</p>
+							<p>{{game.GameDescription | cut:true:40:' ...'}}</p>
+						</div>
+						<div class="col no-padding action-row text-right">
+							<ul class="action-h-list">
+								<li class="action" style="padding: 0; font-size: 10px;" ng-click="likeDislikeGame(game)">
+									<img style="width: 10px;" src="img/icon-like.png" /> {{game.islike}}<span ng-if="game.Glike"> ({{game.Glike}})</span>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</ion-content>
+	<div class="tabs tabs-icon-top footer-tab">
+		<a nav-transition="none" class="tab-item" href="#/menu/news-main">
+			<i class="icon tab-icon-newsfeed"></i>
+			NEWSFEED
+		</a>
+		<a nav-transition="none" class="tab-item" href="#/menu/explore">
+			<i class="icon tab-icon-explore"></i>
+			EXPLORE
+		</a>
+		<div nav-transition="none" class="tab-item" ng-click="launchChatNow()">
+			<i class="icon tab-icon-chat"></i>
+			CHAT
+			<!-- <span class="badge badge-stable header-badge">10</span> -->
+		</div>
+		<a nav-transition="none" class="tab-item" href="#/menu/notifications">
+			<i class="icon tab-icon-notifications"></i>
+			NOTIFICATIONS
+			<span class="badge badge-stable header-badge"></span>
+		</a>
+		<a nav-transition="none" class="tab-item" href="#/menu/profile/{{userInfo.userId}}">
+			<i class="icon tab-icon-profile"></i>
+			PROFILE
+		</a>
+	</div>
+</ion-view>

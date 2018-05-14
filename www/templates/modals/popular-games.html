@@ -1,0 +1,15 @@
+<ion-modal-view class="widget-modal">
+	<ion-header-bar align-title="center">
+		<p class="title">POPULAR GAMES</p>
+		<div class="buttons">
+			<button class="button button-clear button-icon icon ion-ios-close-empty" ng-click="closePopularGames()"></button>
+		</div>
+	</ion-header-bar>
+	<ion-content>
+		<div class="margin" ng-repeat="game in popularGames">
+			<div class="item item-image" ng-click="closePopularGames(); goTo('menu.game-view', {gameId: game.GameID})">
+				<img src='img/loading-img.gif' lazy-img="{{imgBasePath + tournament.GameCoverImage}}" />
+			</div>
+		</div>
+	</ion-content>
+</ion-modal-view>

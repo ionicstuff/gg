@@ -1,0 +1,63 @@
+<ion-view class="slider-bg">
+	<ion-content class="has-footer" ng-init="checkStatus()">
+		<ion-slide-box class="intro-slider" on-slide-changed="slideHasChanged($index)">
+				<ion-slide>
+					<div class="box text-center">
+						<div class="slider-img">
+							<img src="img/slider-img-1.png" />
+						</div>
+						<h3 class="uppercase">Become a god</h3>
+						<div class="heading-boarder"></div>
+						<p class="uppercase">
+							And grow your gaming network
+						</p>
+						<div class="text-center">
+							<ul class="action-button" ng-click="goTo('app.login-register', {})">
+								<li><img src="img/icon-signup.png" /></li>
+								<li>SIGN-UP</li>
+							</ul>
+						</div>
+					</div>
+				</ion-slide>
+				<ion-slide>
+					<div class="box text-center">
+						<div class="slider-img">
+							<img src="img/slider-img-1.png" />
+						</div>
+						<h3 class="uppercase">Become a god</h3>
+						<div class="heading-boarder"></div>
+						<p class="uppercase">
+							And grow your gaming network
+						</p>
+						<div class="text-center">
+							<ul class="action-button" ng-click="goTo('app.login-register', {})">
+								<li><img src="img/icon-signup.png" /></li>
+								<li>SIGN-UP</li>
+							</ul>
+						</div>
+					</div>
+				</ion-slide>
+				<ion-slide>
+					<div class="box text-center">
+						<div class="slider-img">
+							<img src="img/slider-img-1.png" />
+						</div>
+						<h3 class="uppercase">Become a god</h3>
+						<div class="heading-boarder"></div>
+						<p class="uppercase">
+							And grow your gaming network
+						</p>
+						<div class="text-center">
+							<ul class="action-button" ng-click="goTo('app.login-register', {})">
+								<li><img src="img/icon-signup.png" /></li>
+								<li>SIGN-UP</li>
+							</ul>
+						</div>
+					</div>
+				</ion-slide>
+			</ion-slide-box>
+	</ion-content>
+	<div class="bar bar-footer bar-transparent hide-on-keyboard-open" ng-click="goTo('app.login-register', {})">
+		<div class="title">SKIP</div>
+	</div>
+</ion-view>

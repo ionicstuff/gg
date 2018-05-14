@@ -1,0 +1,155 @@
+<ion-view view-title="TEAM DETAILS">
+	<ion-nav-buttons side="left">
+		<button class="button button-icon ion-android-arrow-back default-button" ng-click="goBack()"></button>
+	</ion-nav-buttons>
+	<div class="bar bar-subheader">
+		<div class="row no-padding">
+			<div class="col col-100 no-padding follow-info">
+				<p class="text-center">{{team.TeamName}}</p>
+			</div>
+		</div>
+	</div>
+	<ion-content class="has-big-subheader has-tabs has-custom-tab main-content profile-content">
+		<div class="header-img" style="background: url('{{imgBasePath + team.TeamCoverImage}}') center no-repeat; background-size: cover;">
+			
+			<div class="user-img" style="background: url('{{imgBasePath + team.TeamLogo}}') no-repeat center; background-size: cover;">
+			</div>
+		</div>
+		<div class="margin">
+			<ul class="button-tab text-center">
+				<li class="tab-button active" style="width: auto;">
+					JOIN THE TEAM
+				</li>
+			</ul>
+		</div>
+		<div class="container">
+			<div class="margin">
+				<div class="devider"></div>
+			</div>
+			<div class="margin">
+				<ul class="button-tab text-center">
+					<li class="tab-button" ng-class="view == 'feed' ? 'active' : ''" ng-click="toggleView('feed')">
+						FEED
+					</li>
+					<li class="tab-button" ng-class="view == 'about' ? 'active' : ''" ng-click="toggleView('about')">
+						ABOUT
+					</li>
+					<li class="tab-button" ng-class="view == 'members' ? 'active' : ''" ng-click="toggleView('members')">
+						MEMBERS
+					</li>
+				</ul>
+			</div>
+			<div ng-if="view == 'about'">
+				<div class="margin">
+					<div class="item item-image no-border">
+						<img src="img/game-view.jpg" />
+					</div>
+					<div class="item item-text-wrap news-details">
+						<h2 class="uppercase">{{team.TeamName}}</h2>
+						<p>{{team.TeamBlast}}</p>
+					</div>
+				</div>
+			</div>
+			<div ng-if="view == 'feed'">
+				<div class="margin">
+					<div class="accordion status-section margin">
+						<div class="item item-divider item-title text-left">
+							<p>Status</p>
+						</div>
+						<div class="item">
+							<textarea placeholder="Have Comments on this game? Post it here!" rows="5"></textarea>
+						</div>
+						<div class="item item-extra-options">
+							<div class="row no-padding">
+								<div class="col col-offset-75 text-right">
+									<button class="button button-small button-clear button-image">
+										<img src="img/post_icon.png" />
+									</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="timeline margin">
+					<div ng-repeat="item in team.Teamfeed" class="margin">
+						<div class="item item-user-details">
+							<div class="row">
+								<div class="col col-10 no-padding profile-img round-img extra-image-style" style="background: url({{imgBasePath + item.UserProfileImage}}) no-repeat center; background-size: cover;">
+								</div>
+								<div class="col col-90 no-padding profile-details" style="margin-top: 0;">
+									<p class="name uppercase">{{item.username}}</p>
+									<p class="time">{{item.TimelinePostCreatedAt | timeAgo}}</p>
+								</div>
+							</div>
+						</div>
+						<div class="item item-body">
+							<p>{{item.TeamCommentText}}</p>
+						</div>
+						<div class="item item-user-details">
+							<ul class="card-action" style="background: none; padding: 5px;">
+								<li style="font-size: 10px; padding-right: 5px;">
+									<img src="img/icon-like.png" /> {{item.lcount}} {{item.islike}}
+								</li>
+								<li style="font-size: 10px; padding-right: 5px;" ng-click="getMyComments(item)">
+									<img src="img/icon-comment.png" /> {{item.ccount}} Comment
+								</li>
+								<li style="font-size: 10px; padding-right: 5px;">
+									<img src="img/icon-share.png" /> Share
+								</li>
+								<li style="font-size: 10px; padding-right: 5px;">
+									<img src="img/icon-pin.png" /> Pin
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="margin" ng-if="view == 'members'">
+				<div class="item item-follower" ng-repeat="member in team.Teammember">
+					<div class="row no-padding">
+						<div class="col col-10 no-padding profile-img">
+							<img style="border-radius: 50%;" src="{{imgBasePath + member.UserProfileImage}}" />
+						</div>
+						<div class="col col-50 no-padding profile-details">
+							<p class="name uppercase" style="line-height: 28px;">{{member.username}}</p>
+						</div>
+						<div class="col no-padding action-row text-right">
+							<ul class="action-h-list">
+								<li class="action border">
+									<img style="width: 20px;" src="img/icon-comment.png" />
+								</li>
+								<li class="action right-action" style="font-size: 12px;line-height: 40px;">
+									FOLLOW
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</ion-content>
+	<div class="tabs tabs-icon-top footer-tab">
+		<a nav-transition="none" class="tab-item" href="#/menu/news-main">
+			<i class="icon tab-icon-newsfeed"></i>
+			NEWSFEED
+		</a>
+		<a nav-transition="none" class="tab-item" href="#/menu/explore">
+			<i class="icon tab-icon-explore"></i>
+			EXPLORE
+		</a>
+		<div nav-transition="none" class="tab-item" ng-click="launchChatNow()">
+			<i class="icon tab-icon-chat"></i>
+			CHAT
+			<!-- <span class="badge badge-stable header-badge">10</span> -->
+		</div>
+		<a nav-transition="none" class="tab-item" href="#/menu/notifications">
+			<i class="icon tab-icon-notifications"></i>
+			NOTIFICATIONS
+			<span class="badge badge-stable header-badge"></span>
+		</a>
+		<a nav-transition="none" class="tab-item" href="#/menu/profile/{{userInfo.userId}}">
+			<i class="icon tab-icon-profile"></i>
+			PROFILE
+		</a>
+	</div>
+</ion-view>

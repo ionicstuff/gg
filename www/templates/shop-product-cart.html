@@ -1,0 +1,97 @@
+<ion-view view-title="VIEW CART">
+	<ion-nav-buttons side="left">
+		<button class="button button-icon ion-android-arrow-back default-button" ng-click="goBack()"></button>
+	</ion-nav-buttons>
+	<div class="bar bar-subheader">
+		<div class="row no-padding">
+			<div class="col col-100 no-padding follow-info">
+				<p class="text-center"><span ng-click="">Shop</span> | <span ng-click="">Auction</span></p>
+			</div>
+		</div>
+	</div>
+	<ion-content class="has-big-subheader has-tabs has-custom-tab main-content">
+		<div class="container">
+			<div class="item item-thumbnail-left cart-item">
+				<img src="img/product1.jpg" />
+				<p class="product-name">GAME PAD</p>
+				<p class="product-price">Price: 50 Credits</p>
+				<div class="qty-selection">
+					<label>Quantity:</label>
+					<select>
+						<option>1</option>
+					</select>
+				</div>
+				<i class="icon ion-ios-close-empty delete-btn"></i>
+			</div>
+			<div class="item item-thumbnail-left cart-item">
+				<img src="img/product1.jpg" />
+				<p class="product-name">GAME PAD</p>
+				<p class="product-price">Price: 50 Credits</p>
+				<div class="qty-selection">
+					<label>Quantity:</label>
+					<select>
+						<option>1</option>
+					</select>
+				</div>
+				<i class="icon ion-ios-close-empty delete-btn"></i>
+			</div>
+			<div class="item item-thumbnail-left cart-item">
+				<img src="img/product1.jpg" />
+				<p class="product-name">GAME PAD</p>
+				<p class="product-price">Price: 50 Credits</p>
+				<div class="qty-selection">
+					<label>Quantity:</label>
+					<select>
+						<option>1</option>
+					</select>
+				</div>
+				<i class="icon ion-ios-close-empty delete-btn"></i>
+			</div>
+		</div>
+		<div class="container">
+			<div class="margin cart-summery">
+				<p>TOTAL<span class="pull-right">50 Credits</span></p>
+				<div class="underline"></div>
+				<p>SUB-TOTAL<span class="pull-right">50 Credits</span></p>
+				<div class="underline2"></div>
+				<input class="coupon-input" type="text" placeholder="Coupon Code" />
+				<button class="button button-custom">APPLY</button>
+				<div class="underline"></div>
+				<p>GRAND TOTAL<span class="pull-right" style="color: #54b512;">50 Credits</span></p>
+				<div class="underline"></div>
+			</div>
+			<div class="margin cart-action-buttons">
+				<button class="button button-small button-custom">
+					UPDATE CART
+				</button>
+				<button class="button button-small button-custom pull-right" ng-click="goTo('menu.shop-product-checkout', {})">
+					PROCEED TO CHECKOUT
+				</button>
+			</div>
+		</div>
+	</ion-content>
+	<div class="tabs tabs-icon-top footer-tab">
+		<a nav-transition="none" class="tab-item" href="#/menu/news-main">
+			<i class="icon tab-icon-newsfeed"></i>
+			NEWSFEED
+		</a>
+		<a nav-transition="none" class="tab-item" href="#/menu/explore">
+			<i class="icon tab-icon-explore"></i>
+			EXPLORE
+		</a>
+		<div nav-transition="none" class="tab-item" ng-click="launchChatNow()">
+			<i class="icon tab-icon-chat"></i>
+			CHAT
+			<!-- <span class="badge badge-stable header-badge">10</span> -->
+		</div>
+		<a nav-transition="none" class="tab-item" href="#/menu/notifications">
+			<i class="icon tab-icon-notifications"></i>
+			NOTIFICATIONS
+			<span class="badge badge-stable header-badge"></span>
+		</a>
+		<a nav-transition="none" class="tab-item" href="#/menu/profile/{{userInfo.userId}}">
+			<i class="icon tab-icon-profile"></i>
+			PROFILE
+		</a>
+	</div>
+</ion-view>

@@ -1,0 +1,63 @@
+<ion-view view-title="PROFILE" hide-nav-bar="true" class="interests-bg">
+    <div class="bar bar-subheader full-subheader">
+        <button class="button button-icon button-clear ion-navicon button-nav" menu-toggle="left">
+        </button>
+        <h2 class="title">PROFILE</h2>
+    </div>
+    <ion-content class="has-footer fullscreen-content">
+        <div class="header-text text-center">
+            <h3 class="text-white">Select Your Platform</h3>
+            <p class="sub-heading">You can select multiple platforms</p>
+            <button class="button button-clear button-image">
+                <img src="img/icon-unknown.png" />
+            </button>
+        </div>
+        <div class="grid-menu-container">
+            <ul vertilize-container class="grid-menu-list">
+                <li vertilize class="grid-menu-item" ng-repeat="platform in platforms" ng-click="toggleSelection(platform)">
+                    <div class="menu-image" ng-show="!platform.selected" style="background: url({{platform.icon}}) no-repeat center; background-size: contain;">
+                    </div>
+                    <div class="menu-image" ng-show="platform.selected" style="background: url({{platform.activeIcon}}) no-repeat center; background-size: contain;">
+                    </div>
+                    <p class="uppercase item-title">{{platform.title}}</p>
+                </li>
+            </ul>
+        </div>
+        <div class="header-text text-center">
+            <h3 class="text-white">Games You Like</h3>
+            <p class="sub-heading">You can select multiple games</p>
+            <button class="button button-clear button-image">
+                <img src="img/icon-unknown.png" />
+            </button>
+        </div>
+        <div class="container">
+            <form class="main-form">
+                <div class="row no-padding">
+                    <div class="col col-20 icon-col no-padding text-center">
+                        <img class="input-icon icon-game-title" src="img/icon-game-title.png" />
+                    </div>
+                    <div class="col no-padding">
+                        <input type="text" placeholder="PLEASE ENTER GAME TITLE" />
+                    </div>
+                </div>
+            </form>
+            <div class="list selected-list">
+                <div class="item item-button-right uppercase">
+                    Dota
+                    <button class="button button-small button-icon icon ion-ios-close-empty"></button>
+                </div>
+                <div class="item item-button-right uppercase">
+                    Fifa
+                    <button class="button button-small button-icon icon ion-ios-close-empty"></button>
+                </div>
+                <div class="item item-button-right uppercase">
+                    Battlefield
+                    <button class="button button-small button-icon icon ion-ios-close-empty"></button>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+    <div class="bar bar-footer bar-transparent hide-on-keyboard-open" ng-click="savePlatforms()">
+        <div class="title">PROCEED</div>
+    </div>
+</ion-view>

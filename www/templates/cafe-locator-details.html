@@ -1,0 +1,169 @@
+<ion-view view-title="CAFE LOCATOR">
+	<ion-nav-buttons side="left">
+		<button class="button button-icon ion-android-arrow-back default-button" ng-click="goBack()"></button>
+	</ion-nav-buttons>
+	<div class="bar bar-subheader">
+		<div class="row no-padding">
+			<div class="col col-100 no-padding follow-info">
+				<p class="text-center" ng-if="userInfo.locationAvailable">
+					<img class="header-location" src="img/icon-menu-location.png" /><span ng-click="">Location: {{userInfo.city}}, {{userInfo.country}}&nbsp;&nbsp;|&nbsp;&nbsp;Change</span>
+				</p>
+				<p class="text-center" ng-if="!userInfo.locationAvailable" ng-click="refreshLocation()">
+					Turn on location service
+				</p>
+			</div>
+		</div>
+	</div>
+	<ion-content class="has-big-subheader has-tabs has-custom-tab main-content profile-content">
+		<div class="margin">
+			<p class="text-center">{{cafe.GamingcafeName}}</p>
+		</div>
+		<div class="header-img" style="background: url('{{imgBasePath + cafe.GamingcafeCoverImage}}') center no-repeat; background-size: cover;">
+			<!-- <div class="edit-cover-image-button" ng-click="selectImage('UserCoverImage', 'update_coverpic', 900, 300)" ng-if="userIds.userId == userIds.profile_id">
+				<button class="button button-green button-round">
+					<img src="img/icon-camera.png" />
+				</button>
+				<span>UPDATE COVER IMAGE</span>
+			</div> -->
+			<div class="user-img" style="background: url('{{imgBasePath + cafe.GamingcafeLogoImage}}') no-repeat; background-size: cover;">
+				<!-- <button class="button button-green button-round edit-profile-pic-button" ng-click="selectImage('UserProfileImage', 'update_profilepic', 500, 500)" ng-if="userIds.userId == userIds.profile_id">
+					<img src="img/icon-camera.png" />
+				</button> -->
+			</div>
+		</div>
+
+		<div class="margin">
+			<ul class="button-tab text-center last-tabs">
+				<li class="tab-button dark-button">
+					{{cafe.isfollow}}
+				</li>
+				<li class="tab-button dark-button active">
+					<img src="img/icon-like-black.png" /> {{cafe.GFlike}} {{cafe.islike}}
+				</li>
+				<li class="tab-button dark-button">
+					RATE US
+				</li>
+			</ul>
+		</div>
+		<div class="container">
+			<div class="margin">
+				<ul vertilize-container class="grid-menu-list header-g">
+					<li vertilize class="grid-menu-item">
+						<h3 class="title">{{cafe.GFfollow}}</h3>
+						<p class="item-title">Followers</p>
+					</li>
+					<li vertilize class="grid-menu-item">
+						<h3 class="title">{{cafe.GFlike}}</h3>
+						<p class="item-title">Likes</p>
+					</li>
+					<li vertilize class="grid-menu-item">
+						<h3 class="title"><i class="icon ion-star"></i><i class="icon ion-star"></i><i class="icon ion-star"></i><i class="icon ion-star"></i><i class="icon ion-star"></i></h3>
+						<p class="item-title">&nbsp;</p>
+					</li>
+				</ul>
+			</div>
+			<div class="margin">
+				<div class="item item-image no-border">
+					<img src='img/loading-img.gif' lazy-img='{{imgBasePath + cafe.GamingcafeBannerImage}}' />
+				</div>
+				<div class="item item-text-wrap news-details">
+					<h2 class="uppercase">ABOUT US</h2>
+					<p>{{cafe.GamingcafeDescription}}</p>
+				</div>
+			</div>
+			<div class="margin">
+				<div class="item item-image" style="margin: 0;">
+					<ui-gmap-google-map class="location-map" center='map.center' zoom='map.zoom' control='map.control'>
+						<ui-gmap-marker coords="marker.coords" options="marker.options" events="marker.events" idkey="marker.id">
+						</ui-gmap-marker>
+					</ui-gmap-google-map>
+				</div>
+				<div class="row location-info-row">
+					<div class="col col-10 location-bullet">
+						<img src="img/icon-location-green.png" />
+					</div>
+					<div class="col">
+						<p class="title">{{cafe.GamingcafeName}}</p>
+						<p class="info">{{cafe.GamingcafeAddress}}</p>
+					</div>
+				</div>
+			</div>
+			<div class="margin">
+				<div class="accordion status-section margin">
+					<div class="item item-divider item-title text-left">
+						<p>Status</p>
+					</div>
+					<div class="item">
+						<textarea placeholder="Have Comments on this game? Post it here!" rows="5"></textarea>
+					</div>
+					<div class="item item-extra-options">
+						<div class="row no-padding">
+							<div class="col col-offset-75 text-right">
+								<button class="button button-small button-custom">
+									POST
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="timeline margin">
+				<div ng-repeat="item in cafe.Cafefeed" class="margin">
+					<div class="item item-user-details">
+						<div class="row">
+							<div class="col col-10 no-padding profile-img round-img extra-image-style" style="background: url({{imgBasePath + item.UserProfileImage}}) no-repeat center; background-size: cover;">
+							</div>
+							<div class="col col-90 no-padding profile-details" style="margin-top: 0;">
+								<p class="name uppercase">{{item.username}}</p>
+								<p class="time">{{comment.GamecafeCommentCreatedAt | timeTillNow}}</p>
+							</div>
+						</div>
+					</div>
+					<div class="item item-body">
+						<p>{{item.GamecafeCommentText}}</p>
+					</div>
+					<div class="item item-user-details">
+						<ul class="card-action" style="background: none; padding: 5px;">
+							<li style="font-size: 10px; padding-right: 5px;">
+								<img src="img/icon-like.png" /> {{item.CountCommentlike} {{item.islike}}
+							</li>
+							<li style="font-size: 10px; padding-right: 5px;" ng-click="getMyComments(item)">
+								<img src="img/icon-comment.png" /> {{item.CountComments}} Comments
+							</li>
+							<li style="font-size: 10px; padding-right: 5px;">
+								<img src="img/icon-share.png" /> Share
+							</li>
+							<li style="font-size: 10px; padding-right: 5px;">
+								<img src="img/icon-pin.png" /> {{item.ispin}}
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</ion-content>
+	<div class="tabs tabs-icon-top footer-tab">
+		<a nav-transition="none" class="tab-item" href="#/menu/news-main">
+			<i class="icon tab-icon-newsfeed"></i>
+			NEWSFEED
+		</a>
+		<a nav-transition="none" class="tab-item" href="#/menu/explore">
+			<i class="icon tab-icon-explore"></i>
+			EXPLORE
+		</a>
+		<div nav-transition="none" class="tab-item" ng-click="launchChatNow()">
+			<i class="icon tab-icon-chat"></i>
+			CHAT
+			<!-- <span class="badge badge-stable header-badge">10</span> -->
+		</div>
+		<a nav-transition="none" class="tab-item" href="#/menu/notifications">
+			<i class="icon tab-icon-notifications"></i>
+			NOTIFICATIONS
+			<span class="badge badge-stable header-badge"></span>
+		</a>
+		<a nav-transition="none" class="tab-item" href="#/menu/profile/{{userInfo.userId}}">
+			<i class="icon tab-icon-profile"></i>
+			PROFILE
+		</a>
+	</div>
+</ion-view>

@@ -1,0 +1,207 @@
+<ion-view view-title="PROFILE">
+	<div class="bar bar-subheader">
+		<div class="row no-padding">
+			<div class="col col-75 no-padding follow-info">
+				<p><span ng-click="goTo('menu.followers', {userId: userData.user_id})">{{userData.FollowerCount}} Followers</span> | <span ng-click="goTo('menu.following', {userId: userData.user_id})">{{userData.FollowingCount}} Following</span></p>
+			</div>
+			<div class="col no-padding text-right" ng-if="userIds.userId != userIds.profile_id">
+				<button class="button button-small button-custom uppercase" ng-click="followUnfollowUser(userData, userData.user_id)">
+					{{userData.isfollow}}
+				</button>
+			</div>
+		</div>
+	</div>
+	<ion-content class="has-big-subheader has-tabs has-custom-tab main-content profile-content">
+		<div ng-controller="UserImagesCtrl">
+			<div class="header-img" style="background: url('{{imgBasePath + userData.UserCoverImage}}') center no-repeat; background-size: cover;">
+				<div class="edit-cover-image-button" ng-click="selectImage('UserCoverImage', 'update_coverpic', 900, 300)" ng-if="userIds.userId == userIds.profile_id">
+					<button class="button button-green button-round">
+						<img src="img/camera_svg_icon.png" />
+					</button>
+					<span>UPDATE COVER IMAGE</span>
+				</div>
+				<div class="user-img" style="background: url('{{imgBasePath + userData.UserProfileImage}}') no-repeat; background-size: cover;">
+					<button class="button button-green button-round edit-profile-pic-button" ng-click="selectImage('UserProfileImage', 'update_profilepic', 500, 500)" ng-if="userIds.userId == userIds.profile_id">
+						<img style="width: 17px;" src="img/camera_svg_icon.png" />
+					</button>
+				</div>
+			</div>
+		</div>
+
+		<div class="container">
+			<div class="accordion">
+				<div class="item item-divider item-icon-right item-title text-left" ng-click="toggleGroup('bio')" ng-class="{active: isGroupShown('bio')}">
+					<p>Player Bio</p>
+					<i class="icon" ng-class="isGroupShown('bio') ? 'ion-android-remove' : 'ion-android-add'"></i>
+				</div>
+				<div class="item item-text-wrap item-accordion item-transparent" ng-show="isGroupShown('bio')">
+					<p ng-bind-html="userData.ProfileBio | unsafe"></p>
+				</div>
+			</div>
+		</div>
+		<div class="row no-padding grid-icon-row">
+			<div class="col col-33 icon-grid">
+				<div class="grid-image" style="background: url('img/icon-steam.png') no-repeat center; background-size: contain;"></div>
+				<div class="grid-text">
+					<p class="title">STEAM</p>
+					<p class="small-title">Lorem ipsum dolor</p>
+				</div>
+			</div>
+			<div class="col col-33 icon-grid">
+				<div class="grid-image" style="background: url('img/icon-playstation.png') no-repeat center; background-size: contain;"></div>
+				<div class="grid-text">
+					<p class="title">Playstation</p>
+					<p class="small-title">Lorem ipsum dolor</p>
+				</div>
+			</div>
+			<div class="col col-33 icon-grid">
+				<div class="grid-image" style="background: url('img/icon-xbox.png') no-repeat center; background-size: contain;"></div>
+				<div class="grid-text">
+					<p class="title">Xbox Live</p>
+					<p class="small-title">Lorem ipsum dolor</p>
+				</div>
+			</div>
+		</div>
+		<div class="container">
+			<div class="grid-menu-container margin">
+				<ul vertilize-container class="grid-menu-list info-list">
+					<li vertilize class="grid-menu-item" ng-click="goTo('menu.friends', {})">
+						<h3 class="title">{{userData.FriendCount | twoDigit}}</h3>
+						<p class="item-title">Friends</p>
+					</li>
+					<li vertilize class="grid-menu-item" ng-click="goTo('menu.photos', {userId: userData.user_id})">
+						<h3 class="title">{{userData.PhotoCount | twoDigit}}</h3>
+						<p class="item-title">Photos</p>
+					</li>
+					<li vertilize class="grid-menu-item" ng-click="goTo('menu.user-videos', {userId: userData.user_id})">
+						<h3 class="title">{{userData.VideoCount | twoDigit}}</h3>
+						<p class="item-title">Videos</p>
+					</li>
+					<li vertilize class="grid-menu-item" ng-click="goTo('menu.user-communities', {userId: userData.user_id})">
+						<h3 class="title">{{userData.CommunityCount | twoDigit}}</h3>
+						<p class="item-title">Communities</p>
+					</li>
+					<li vertilize class="grid-menu-item" ng-click="goTo('menu.user-teams', {userId: userData.user_id})">
+						<h3 class="title">{{userData.TeamCount | twoDigit}}</h3>
+						<p class="item-title">Teams</p>
+					</li>
+					<li vertilize class="grid-menu-item" ng-click="goTo('menu.user-liked-games', {userId: userData.user_id})">
+						<h3 class="title">{{userData.GameLikeCount | twoDigit}}</h3>
+						<p class="item-title">Liked Games</p>
+					</li>
+					<li vertilize class="grid-menu-item" ng-click="goTo('menu.user-tournaments', {userId: userData.user_id})">
+						<h3 class="title">{{userData.TournamentCount | twoDigit}}</h3>
+						<p class="item-title">Tournaments</p>
+					</li>
+					<li vertilize class="grid-menu-item" ng-click="goTo('menu.user-events', {userId: userData.user_id})">
+						<h3 class="title">{{userData.EventCount | twoDigit}}</h3>
+						<p class="item-title">Events</p>
+					</li>
+					<li vertilize class="grid-menu-item">
+						<h3 class="title">{{userData.BadgeCount | twoDigit}}</h3>
+						<p class="item-title">Badges</p>
+					</li>
+				</ul>
+			</div>
+			<div class="accordion status-section margin">
+				<div class="item item-divider item-title text-left">
+					<p>Status</p>
+				</div>
+				<div class="item">
+					<textarea placeholder="What’s going on in your gaming world" rows="5"></textarea>
+				</div>
+				<div class="item item-extra-options">
+					<div class="row no-padding">
+						<div class="col col-10 text-center no-padding" style="line-height: 38px;">
+							<i class="icon ion-ios-gear-outline"></i>
+						</div>
+						<div class="col col-33 select-box text-center no-padding" style="line-height: 36px;">
+							Privacy: 
+							<select class="transparent-select" ng-model="statusData.privacy">
+								<option value="0">Global</option>
+								<option value="0">Friends</option>
+							</select>
+						</div>
+						<div class="col text-right no-padding">
+							<button class="button button-small button-clear button-image my-status-btn" ng-click="addNewStatus(statusData)">
+								<img src="img/post_icon.png" />
+							</button>
+						</div>
+					</div>
+				</div>
+				<div class="item item-footer">
+					<ul class="action-h-list text-center">
+						<li class="action border">
+							<img src="img/icon-timeline.png" /> Timeline
+						</li>
+						<li class="action border">
+							<img src="img/icon-comment.png" /> 10 Mentions
+						</li>
+						<li class="action border" style="border-right: none;">
+							<img src="img/icon-pin.png" /> 25 Pinned
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="accordion timeline margin">
+				<div ng-repeat="(title, comments) in userData.Timelinelist">
+					<div class="item item-divider item-icon-right item-title text-left margin" ng-click="toggleTimeline($index)" ng-class="{active: isTimelineShown($index)}">
+						<p>{{title}}</p>
+						<i class="icon" ng-class="isTimelineShown($index) ? 'ion-android-remove' : 'ion-android-add'"></i>
+					</div>
+					<div ng-repeat="comment in comments" ng-show="isTimelineShown($parent.$index)">
+						<div class="item item-body">
+							<p>{{comment.TimelinePostText}}</p>
+						</div>
+						<div class="item item-user-details">
+							<div class="row">
+								<div class="col col-10 no-padding profile-img">
+									<img src="img/comment-user.png" />
+								</div>
+								<div class="col col-33 no-padding profile-details">
+									<p class="name uppercase">Gamaniac</p>
+									<p class="time">a day ago</p>
+								</div>
+								<div class="col no-padding action-row text-right">
+									<ul class="action-h-list" style="margin-top: 10px;">
+										<li class="action">
+											<img src="img/icon-comment.png" /> Comment ({{comment.CountCommentpost}})
+										</li>
+										<li class="action devider-line"></li>
+										<li class="action">
+											<img style="width: 10px;" src="img/icon-like.png" /> Likes (10)
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</ion-content>
+	<div class="tabs tabs-icon-top footer-tab">
+		<a nav-transition="none" class="tab-item" href="#/menu/news-main">
+			<i class="icon tab-icon-newsfeed"></i>
+			NEWSFEED
+		</a>
+		<a nav-transition="none" class="tab-item" href="#/menu/explore">
+			<i class="icon tab-icon-explore"></i>
+			EXPLORE
+		</a>
+		<div nav-transition="none" class="tab-item" ng-click="launchChatNow()">
+			<i class="icon tab-icon-chat"></i>
+			CHAT
+			<!-- <span class="badge badge-stable header-badge">10</span> -->
+		</div>
+		<a nav-transition="none" class="tab-item" href="#/menu/notifications">
+			<i class="icon tab-icon-notifications"></i>
+			NOTIFICATIONS
+			<span class="badge badge-stable header-badge"></span>
+		</a>
+		<a nav-transition="none" class="tab-item" ng-class="userIds.userId == userIds.profile_id ? 'active' : ''" href="#/menu/profile/{{userInfo.userId}}">
+			<i class="icon tab-icon-profile"></i>
+			PROFILE
+		</a>
+	</div>
+</ion-view>

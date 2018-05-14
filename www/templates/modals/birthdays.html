@@ -1,0 +1,28 @@
+<ion-modal-view class="widget-modal">
+	<ion-header-bar align-title="center">
+		<p class="title">BIRTHDAYS</p>
+		<div class="buttons">
+			<button class="button button-clear button-icon icon ion-ios-close-empty" ng-click="closeBirthdayModal()"></button>
+		</div>
+	</ion-header-bar>
+	<ion-content>
+		<div class="list">
+			<div class="item item-avatar item-text-wrap" ng-repeat="comment in comments">
+				<img src='img/loading-img.gif' lazy-img='{{imgBasePath + comment.UserProfileImage}}' />
+				<h2>{{comment.username}}</h2>
+				<p>{{comment.CommentReplyText}}</p>
+			</div>
+			<p class="text-center" ng-if="comments.length == 0">No comments..!</p>
+		</div>
+	</ion-content>
+	<div class="bar bar-footer comment-input">
+		<div class="item item-input-inset">
+			<label class="item-input-wrapper">
+				<input type="text" placeholder="Write your comment.." ng-model="newComment.text" />
+			</label>
+			<button class="button button-small button-clear button-image" ng-click="postComment(newComment.text)">
+				<img src="img/post_icon.png" />
+			</button>
+		</div>
+	</div>
+</ion-modal-view>

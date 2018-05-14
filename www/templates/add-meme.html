@@ -1,0 +1,123 @@
+<ion-view view-title="CREATE MEME">
+	<div class="bar bar-subheader">
+		<button class="button icon-left ion-android-arrow-back button-clear button-custom" ng-click="goBack()">Back</button>
+	</div>
+	<ion-content class="has-big-subheader has-tabs has-custom-tab main-content profile-content">
+		<div class="container margin">
+			<form class="general-form" name="addMemeForm" novalidate="novalidate">
+				<div class="list">
+					<label class="item item-input item-stacked-label item-text-wrap">
+						<span class="input-label main-label">Meme Name</span>
+						<span class="input-label small-label">Your meme will be known as this.</span>
+						<input name="memename" type="text" ng-model="meme.memename" placeholder="" required />
+						<p class="validation-error" ng-show="submitted && addMemeForm.memename.$error.required">Meme name is required.</p>
+					</label>
+					<label class="item item-input item-stacked-label">
+						<span class="input-label main-label">TOP TEXT PROPERTIES</span>
+						<span class="input-label small-label">Settings for top text of meme.</span>
+					</label>
+					<label class="item item-input item-stacked-label">
+						<span class="input-label sub-label">TEXT</span>
+						<input name="topText" type="text" ng-model="meme.topText" placeholder="" ng-change="createMeme(meme)" />
+					</label>
+					<label class="item item-input item-stacked-label">
+						<span class="input-label sub-label">TEXT WIDTH</span>
+						<input name="topTextSize" type="number" ng-model="meme.topTextSize" placeholder="" ng-change="createMeme(meme)" />
+					</label>
+					<div class="item item-input item-stacked-label">
+						<div class="row no-padding">
+							<div class="col col-50">
+								<span class="input-label sub-label">FONT COLOR</span>
+								<color-picker ng-model="meme.upperFontColor" options="options"></color-picker>
+							</div>
+							<div class="col col-50">
+								<span class="input-label sub-label">STROKE COLOR</span>
+								<color-picker ng-model="meme.upperStrokColor" options="options"></color-picker>
+							</div>
+						</div>
+					</div>
+					<label class="item item-input item-stacked-label">
+						<span class="input-label sub-label">TEXT STROKE WIDTH</span>
+						<input name="" type="number" ng-model="meme.upperFontStrokeWidth" placeholder="" />
+					</label>
+					<label class="item item-input item-stacked-label">
+						<span class="input-label main-label">BOTTOM TEXT PROPERTIES</span>
+						<span class="input-label small-label">Settings for bottom text of meme.</span>
+					</label>
+					<label class="item item-input item-stacked-label">
+						<span class="input-label sub-label">TEXT</span>
+						<input name="topText" type="text" ng-model="meme.bottomText" placeholder="" ng-change="createMeme(meme)" />
+					</label>
+					<label class="item item-input item-stacked-label">
+						<span class="input-label sub-label">TEXT WIDTH</span>
+						<input name="topTextSize" type="number" ng-model="meme.bottomTextSize" placeholder="" ng-change="createMeme(meme)" />
+					</label>
+					<div class="item item-input item-stacked-label">
+						<div class="row no-padding">
+							<div class="col col-50">
+								<span class="input-label sub-label">FONT COLOR</span>
+								<color-picker ng-model="meme.bottomFontColor" options="options" api="api" event-api="eventApi" ng-change="createMeme(meme)"></color-picker>
+							</div>
+							<div class="col col-50">
+								<span class="input-label sub-label">STROKE COLOR</span>
+								<color-picker ng-model="meme.bottomStrokColor" options="options" api="api" event-api="eventApi" ng-change="createMeme(meme)"></color-picker>
+							</div>
+						</div>
+					</div>
+					<label class="item item-input item-stacked-label">
+						<span class="input-label sub-label">TEXT STROKE WIDTH</span>
+						<input name="" type="number" ng-model="meme.bottomFontStrokeWidth" placeholder="" />
+					</label>
+					<div class="item item-input item-stacked-label">
+						<span class="input-label main-label">Meme Image</span>
+						<div class="row no-padding">
+							<div class="col col-50 text-center">
+								<button class="form-action with-image" ng-click="captureImage()">
+									<img src="img/icon-camera-green.png" /> CAMERA
+								</button>
+							</div>
+							<div class="col col-50 text-center">
+								<button class="form-action with-image" ng-click="selectImage()">
+									<img src="img/icon-menu-photos.png" /> GALLERY
+								</button>
+							</div>
+						</div>
+					</div>
+					<div class="item item-input item-stacked-label item-text-wrap">
+						<span class="input-label main-label text-center">Meme preview</span>
+						<div class="canvas"></div>
+					</div>
+					<label class="item item-input item-stacked-label">
+						<button class="button button-block button-black" ng-click="addMeme(meme, addMemeForm.$invalid)">
+							CREATE MEME
+						</button>
+					</label>
+				</div>
+			</form>
+		</div>
+	</ion-content>
+	<div class="tabs tabs-icon-top footer-tab">
+		<a nav-transition="none" class="tab-item" href="#/menu/news-main">
+			<i class="icon tab-icon-newsfeed"></i>
+			NEWSFEED
+		</a>
+		<a nav-transition="none" class="tab-item" href="#/menu/explore">
+			<i class="icon tab-icon-explore"></i>
+			EXPLORE
+		</a>
+		<div nav-transition="none" class="tab-item" ng-click="launchChatNow()">
+			<i class="icon tab-icon-chat"></i>
+			CHAT
+			<!-- <span class="badge badge-stable header-badge">10</span> -->
+		</div>
+		<a nav-transition="none" class="tab-item" href="#/menu/notifications">
+			<i class="icon tab-icon-notifications"></i>
+			NOTIFICATIONS
+			<span class="badge badge-stable header-badge"></span>
+		</a>
+		<a nav-transition="none" class="tab-item" href="#/menu/profile/{{userInfo.userId}}">
+			<i class="icon tab-icon-profile"></i>
+			PROFILE
+		</a>
+	</div>
+</ion-view>

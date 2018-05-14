@@ -1,0 +1,94 @@
+<ion-side-menus enable-menu-with-back-views="true">
+	<ion-side-menu-content>
+		<ion-nav-bar class="bar-assertive" align-title="center">
+			<ion-nav-buttons side="left">
+				<button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+				</button>
+			</ion-nav-buttons>
+			<ion-nav-buttons side="right">
+				<button class="button button-clear button-image nav-button">
+					<img src="img/icon-top-users-2.png" />
+				</button>
+				<span class="badge badge-stable header-badge"></span>
+			</ion-nav-buttons>
+		</ion-nav-bar>
+		<ion-nav-view name="menuContent"></ion-nav-view>
+	</ion-side-menu-content>
+
+	<ion-side-menu side="left">
+		<ion-content class="menu-content">
+			<div class="menu-header">
+				<div class="row">
+					<div class="col col-33 profile-pic-col">
+						<div class="profile-img" style="background: url('{{imgBasePath + userInfo.UserProfileImage}}') no-repeat center; background-size: cover;"></div>
+					</div>
+					<div class="col">
+						<div class="user-info">
+							<h3>{{userInfo.firstname}} {{userInfo.lastname}}</h3>
+							<p>{{userInfo.email}}</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<ion-list class="menu-list">
+				<ion-item class="item-divider item-icon-right" ng-if="userInfo.locationAvailable">
+					<img src="img/icon-menu-location.png" /> Location: {{userInfo.city}}, {{userInfo.country}}
+					<i class="icon ion-android-create"></i>
+				</ion-item>
+				<ion-item class="item-divider item-icon-right" ng-if="!userInfo.locationAvailable" ng-click="getCurrentLocation()">
+					<img src="img/icon-menu-location.png" /> Turn on location service
+				</ion-item>
+				<ion-item class="menu-search">
+					<div class="row">
+						<div class="col search-box-main">
+							<input type="text" placeholder="Search" />
+							<button class="button button-icon icon ion-android-search"></button>
+						</div>
+					</div>
+				</ion-item>
+				<ion-item class="menu-item" menu-close ng-click="goTo('menu.news-main', {})">
+					<i class="icon icon-news"></i> News
+				</ion-item>
+				<ion-item class="menu-item" menu-close ng-click="goTo('menu.games', {})">
+					<i class="icon icon-games"></i> Games
+				</ion-item>
+				<ion-item class="menu-item" menu-close ng-click="goTo('menu.streams-videos', {})">
+					<i class="icon icon-videos"></i> Streams/Videos
+				</ion-item>
+				<ion-item class="menu-item" menu-close ng-click="goTo('menu.teams', {})">
+					<i class="icon icon-teams"></i> Teams
+				</ion-item>
+				<ion-item class="menu-item" menu-close ng-click="goTo('menu.communities', {})">
+					<i class="icon icon-communities"></i> Communities
+				</ion-item>
+				<ion-item class="menu-item" menu-close ng-click="goTo('menu.tournaments', {})">
+					<i class="icon icon-tournaments"></i> Tournaments
+				</ion-item>
+				<ion-item class="menu-item" menu-close ng-click="goTo('menu.leader-boards', {})">
+					<i class="icon icon-leaderboards"></i> Leaderboards
+				</ion-item>
+				<ion-item class="menu-item" menu-close ng-click="goTo('menu.events', {})">
+					<i class="icon icon-events"></i> Events
+				</ion-item>
+				<!-- <ion-item class="menu-item" menu-close ng-click="goTo('menu.shop-products', {})">
+					<i class="icon icon-shop"></i> Shop
+				</ion-item> -->
+				<ion-item class="menu-item" menu-close ng-click="goTo('menu.memes', {})">
+					<i class="icon icon-memes"></i> Memes
+				</ion-item>
+				<ion-item class="menu-item" menu-close ng-click="goTo('menu.cafe-locator', {})">
+					<i class="icon icon-cafe-locator"></i> Cafe Locator
+				</ion-item>
+				<ion-item class="menu-item" menu-close ng-click="goTo('menu.create-and-add', {})">
+					<i class="icon icon-create-and-add"></i> Create and Add
+				</ion-item>
+				<ion-item class="menu-item" menu-close ng-click="goTo('menu.more', {})">
+					<i class="icon icon-more"></i> More
+				</ion-item>
+				<ion-item class="menu-item" menu-close ng-click="logout()">
+					<i class="icon icon-logout"></i> Logout
+				</ion-item>
+			</ion-list>
+		</ion-content>
+	</ion-side-menu>
+</ion-side-menus>

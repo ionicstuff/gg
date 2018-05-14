@@ -1,0 +1,21 @@
+<ion-modal-view class="widget-modal">
+	<ion-header-bar align-title="center">
+		<p class="title">TRENDING NOW</p>
+		<div class="buttons">
+			<button class="button button-clear button-icon icon ion-ios-close-empty" ng-click="closeTrendingNow()"></button>
+		</div>
+	</ion-header-bar>
+	<ion-content>
+		<div class="list">
+			<div class="item item-text-wrap row" ng-repeat="news in trendingnews">
+				<div class="col col-10">
+					<span class="trend_num">{{$index + 1}}</span>
+				</div>
+				<div class="col col-90">
+					<h2>{{news.NewsfeedTitle | cut:true:20:' ...'}}</h2>
+					<p>{{news.NewsfeedDescription}}</p>
+				</div>
+			</div>
+		</div>
+	</ion-content>
+</ion-modal-view>

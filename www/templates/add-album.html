@@ -1,0 +1,108 @@
+<ion-view view-title="CREATE ALBUM">
+	<div class="bar bar-subheader">
+		<button class="button icon-left ion-android-arrow-back button-clear button-custom" ng-click="goBack()">Back</button>
+	</div>
+	<ion-content class="has-big-subheader has-tabs has-custom-tab main-content profile-content">
+		<div class="container margin">
+			<form class="general-form" name="addAlbumForm" novalidate="novalidate">
+				<div class="list">
+					<label class="item item-input item-stacked-label item-text-wrap">
+						<span class="input-label main-label">Album Name</span>
+						<span class="input-label small-label">Your album will be known as this.</span>
+						<input name="name" type="text" ng-model="album.name" placeholder="" required />
+						<p class="validation-error" ng-show="submitted && addAlbumForm.name.$error.required">Album name is required.</p>
+					</label>
+					<label class="item item-input item-stacked-label">
+						<span class="input-label main-label">Album Description</span>
+						<span class="input-label small-label">A brief description about your album.</span>
+						<textarea rows="4" name="description" ng-model="album.description"></textarea>
+					</label>
+					<label class="item item-input item-stacked-label">
+						<span class="input-label main-label">Album Platform</span>
+						<span class="input-label small-label">Tell us which platform your album belongs to.</span>
+						<select name="platform" ng-model="album.platform" ng-options="platform.id as platform.text for platform in platforms" required>
+							<option value="">Select Platform</option>
+						</select>
+						<p class="validation-error" ng-show="submitted && addAlbumForm.platform.$error.required">Please select platform.</p>
+					</label>
+					<label class="item item-input item-stacked-label">
+						<span class="input-label main-label">Album location</span>
+						<span class="input-label small-label">Tell us location of your album.</span>
+						<select name="location" ng-model="album.location" ng-options="location.id as location.text for location in locations" required>
+							<option value="">Select Location</option>
+						</select>
+						<p class="validation-error" ng-show="submitted && addAlbumForm.location.$error.required">Please select album location.</p>
+					</label>
+					<label class="item item-input item-stacked-label">
+						<span class="input-label sub-label">Pick A Date</span>
+						<input name="date" type="date" class="icon-right bg-icon-calendar" ng-model="album.date" placeholder="" required />
+						<p class="validation-error" ng-show="submitted && addAlbumForm.date.$error.required">Album date is required.</p>
+					</label>
+					<label class="item item-input item-stacked-label item-text-wrap">
+						<span class="input-label main-label">Album Type *</span>
+						<ul class="options redio-list">
+							<li>
+								<input type="radio" id="public" name="type" ng-model="album.type" value="0" required />
+								<label for="public">Public (Open to all members on the site)</label>
+								<div class="check"></div>
+							</li>
+							<li>
+								<input type="radio" id="private" name="type" ng-model="album.type" value="1" required />
+								<label for="private">Private (By invite only)</label>
+								<div class="check"></div>
+							</li>
+						</ul>
+						<p class="validation-error" ng-show="submitted && addAlbumForm.type.$error.required">Please Select Album Type.</p>
+					</label>
+					<div class="item item-input item-stacked-label">
+						<span class="input-label main-label">Album Image</span>
+						<div class="row no-padding">
+							<div class="col col-50 text-center">
+								<button class="form-action with-image" ng-click="captureImage('AlbumImage', 300, 300)">
+									<img src="img/icon-camera-green.png" /> CAMERA
+								</button>
+							</div>
+							<div class="col col-50 text-center">
+								<button class="form-action with-image" ng-click="selectImage('AlbumImage', 300, 300)">
+									<img src="img/icon-menu-photos.png" /> GALLERY
+								</button>
+							</div>
+						</div>
+						<div ng-if="album.AlbumImage">
+							<img ng-src="{{album.AlbumImage}}" style="height: 80px; width: 80px;" />
+						</div>
+					</div>
+					<label class="item item-input item-stacked-label">
+						<button class="button button-block button-black" ng-click="addAlbum(album, addAlbumForm.$invalid)">
+							CREATE ALBUM
+						</button>
+					</label>
+				</div>
+			</form>
+		</div>
+	</ion-content>
+	<div class="tabs tabs-icon-top footer-tab">
+		<a nav-transition="none" class="tab-item" href="#/menu/news-main">
+			<i class="icon tab-icon-newsfeed"></i>
+			NEWSFEED
+		</a>
+		<a nav-transition="none" class="tab-item" href="#/menu/explore">
+			<i class="icon tab-icon-explore"></i>
+			EXPLORE
+		</a>
+		<div nav-transition="none" class="tab-item" ng-click="launchChatNow()">
+			<i class="icon tab-icon-chat"></i>
+			CHAT
+			<!-- <span class="badge badge-stable header-badge">10</span> -->
+		</div>
+		<a nav-transition="none" class="tab-item" href="#/menu/notifications">
+			<i class="icon tab-icon-notifications"></i>
+			NOTIFICATIONS
+			<span class="badge badge-stable header-badge"></span>
+		</a>
+		<a nav-transition="none" class="tab-item" href="#/menu/profile/{{userInfo.userId}}">
+			<i class="icon tab-icon-profile"></i>
+			PROFILE
+		</a>
+	</div>
+</ion-view>

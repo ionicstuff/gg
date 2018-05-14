@@ -1,0 +1,114 @@
+<ion-view view-title="CHECKOUT">
+	<ion-nav-buttons side="left">
+		<button class="button button-icon ion-android-arrow-back default-button" ng-click="goBack()"></button>
+	</ion-nav-buttons>
+	<div class="bar bar-subheader">
+		<div class="row no-padding">
+			<div class="col col-100 no-padding follow-info">
+				<p class="text-center"><span ng-click="">Shop</span> | <span ng-click="">Auction</span></p>
+			</div>
+		</div>
+	</div>
+	<ion-content class="has-big-subheader has-tabs has-custom-tab main-content">
+		<div class="container">
+			<div class="row checkout-item">
+				<div class="col col-33 product-pic">
+					<div class="item item-image">
+						<img src="img/product1.jpg" />
+					</div>
+				</div>
+				<div class="col col-33 product-info">
+					<p class="product-name">GAME PAD</p>
+					<p class="product-price">Price: 50 Credits</p>
+				</div>
+				<div class="col col-33 product-qty">
+					<label>Quantity:</label>
+					<select>
+						<option>1</option>
+					</select>
+				</div>
+			</div>
+			<div class="margin">
+				<div class="list general-form-2">
+					<div class="item header">
+						<p class="title">Billing Details</p>
+						<div class="br"></div>
+					</div>
+					<label class="item item-input item-stacked-label">
+						<span class="input-label">First Name <span class="required">*</span></span>
+						<input type="text" />
+					</label>
+					<label class="item item-input item-stacked-label">
+						<span class="input-label">Company Name</span>
+						<input type="text" />
+					</label>
+					<label class="item item-input item-stacked-label">
+						<span class="input-label">Country United States (US) <span class="required">*</span></span>
+					</label>
+					<label class="item item-input item-stacked-label">
+						<span class="input-label">Address <span class="required">*</span></span>
+						<input type="text" placeholder="Street address">
+						<input type="text" placeholder="Apartment, suite, unit etc. (optional)" style="margin-top: 8px;">
+					</label>
+					<label class="item item-input item-stacked-label">
+						<span class="input-label">Town/City <span class="required">*</span></span>
+						<input type="text" />
+					</label>
+					<label class="item item-input item-stacked-label">
+						<span class="input-label">State <span class="required">*</span></span>
+						<select>
+							<option>Arizona</option>
+						</select>
+					</label>
+					<label class="item item-input item-stacked-label">
+						<span class="input-label">ZIP <span class="required">*</span></span>
+						<input type="text" />
+					</label>
+					<label class="item item-input item-stacked-label">
+						<span class="input-label">Order Notes</span>
+						<input type="text" placeholder="Notes about your order, e.g. special notes for delivery." />
+					</label>
+					<div class="br2"></div>
+					<label class="item item-input item-text-wrap item-stacked-label">
+						<ul class="options redio-list" style="margin: 0;">
+							<li class="checkbox" style="margin: 0; padding: 0;">
+								<input type="checkbox" id="members" name="members" ng-model="orderData.members" value="members" required />
+								<label for="members" class="input-label main-label">I’ve read and accept the terms & conditions <span class="required">*</span></label>
+								<div class="check" style="top: 4px;"></div>
+							</li>
+						</ul>
+					</label>
+					<div class="margin text-center">
+						<button class="button button-small button-custom" ng-click="goTo('menu.shop-product-order-success', {})">
+							MAKE PAYMENT
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</ion-content>
+	<div class="tabs tabs-icon-top footer-tab">
+		<a nav-transition="none" class="tab-item" href="#/menu/news-main">
+			<i class="icon tab-icon-newsfeed"></i>
+			NEWSFEED
+		</a>
+		<a nav-transition="none" class="tab-item" href="#/menu/explore">
+			<i class="icon tab-icon-explore"></i>
+			EXPLORE
+		</a>
+		<div nav-transition="none" class="tab-item" ng-click="launchChatNow()">
+			<i class="icon tab-icon-chat"></i>
+			CHAT
+			<!-- <span class="badge badge-stable header-badge">10</span> -->
+		</div>
+		<a nav-transition="none" class="tab-item" href="#/menu/notifications">
+			<i class="icon tab-icon-notifications"></i>
+			NOTIFICATIONS
+			<span class="badge badge-stable header-badge"></span>
+		</a>
+		<a nav-transition="none" class="tab-item" href="#/menu/profile/{{userInfo.userId}}">
+			<i class="icon tab-icon-profile"></i>
+			PROFILE
+		</a>
+	</div>
+</ion-view>

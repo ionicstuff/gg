@@ -1,0 +1,116 @@
+<ion-view view-title="PROFILE">
+	<div class="bar bar-subheader">
+		<button class="button icon-left ion-android-arrow-back button-clear button-custom" ng-click="goBack()">Back</button>
+	</div>
+	<ion-content class="has-big-subheader has-tabs has-custom-tab main-content profile-content">
+		<div ng-controller="UserImagesCtrl">
+			<div class="header-img" style="background: url('{{imgBasePath + userData.UserCoverImage}}') center no-repeat; background-size: cover;">
+				<div class="edit-cover-image-button" ng-click="selectImage('UserCoverImage', 'update_coverpic', 900, 300)" ng-if="userIds.userId == userIds.profile_id">
+					<button class="button button-green button-round">
+						<img src="img/icon-camera.png" />
+					</button>
+					<span>UPDATE COVER IMAGE</span>
+				</div>
+				<div class="user-img" style="background: url('{{imgBasePath + userData.UserProfileImage}}') no-repeat; background-size: cover;">
+					<button class="button button-green button-round edit-profile-pic-button" ng-click="selectImage('UserProfileImage', 'update_profilepic', 500, 500)" ng-if="userIds.userId == userIds.profile_id">
+						<img src="img/icon-camera.png" />
+					</button>
+				</div>
+			</div>
+		</div>
+
+		<div class="container">
+			<div class="accordion status-section margin">
+				<div class="item item-divider item-title text-left">
+					<p>COMMUNITIES</p>
+				</div>
+				<div class="item item-buttons">
+					<ul class="action-buttons uppercase text-center">
+						<li ng-class="tab == 'created' ? 'active' : ''" ng-click="setTab('created')">COMMUNITIES CREATED</li>
+						<li ng-class="tab == 'joined' ? 'active' : ''" ng-click="setTab('joined')">COMMUNITIES JOINED</li>
+					</ul>
+				</div>
+			</div>
+			<div ng-if="tab == 'created'">
+				<div class="margin friend-list" ng-repeat="community in createdCommunities">
+					<div class="item item-image" ng-click="goTo('menu.community-view', {communityId: community.CommunityID})">
+						<img src='img/loading-img.gif' lazy-img='{{imgBasePath + community.CommunityCoverImage}}' />
+					</div>
+					<div class="item item-friends item-text-wrap">
+						<div class="row no-padding">
+							<div class="col col-10 no-padding profile-img round-img" style="background: url({{imgBasePath + community.CommunityLogo}}) no-repeat center; background-size: cover;">
+							</div>
+							<div class="col col-33 no-padding profile-details">
+								<p class="name uppercase" style="line-height: 10px;">{{community.CommunityTitle}}</p>
+								<p>{{community.CommunityTitle | cut:true:40:' ...'}}</p>
+							</div>
+							<div class="col no-padding action-row text-right">
+								<ul class="action-h-list">
+									<li class="action" style="padding: 0; font-size: 12px;" ng-click="likeDislike(community)">
+										<img style="width: 12px;" src="img/icon-like.png" /> {{community.islike}} ({{community.Clike}})
+									</li>
+									<li class="action devider-line"></li>
+									<li class="action right-action" style="padding: 0; font-size: 12px;" ng-click="communityJoin(community)">
+										<span ng-if="community.isjoin == 0">JOIN</span><span ng-if="community.isjoin != 0">DISJOIN</span>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div ng-if="tab == 'joined'">
+				<div class="margin friend-list" ng-repeat="community in joinedCommunities">
+					<div class="item item-image" ng-click="goTo('menu.community-view', {communityId: community.CommunityID})">
+						<img src='img/loading-img.gif' lazy-img='{{imgBasePath + community.CommunityCoverImage}}' />
+					</div>
+					<div class="item item-friends item-text-wrap">
+						<div class="row no-padding">
+							<div class="col col-10 no-padding profile-img round-img" style="background: url({{imgBasePath + community.CommunityLogo}}) no-repeat center; background-size: cover;">
+							</div>
+							<div class="col col-33 no-padding profile-details">
+								<p class="name uppercase" style="line-height: 10px;">{{community.CommunityTitle}}</p>
+								<p>{{community.CommunityTitle | cut:true:40:' ...'}}</p>
+							</div>
+							<div class="col no-padding action-row text-right">
+								<ul class="action-h-list">
+									<li class="action" style="padding: 0; font-size: 12px;" ng-click="likeDislike(community)">
+										<img style="width: 12px;" src="img/icon-like.png" /> {{community.islike}} ({{community.Clike}})
+									</li>
+									<li class="action devider-line"></li>
+									<li class="action right-action" style="padding: 0; font-size: 12px;" ng-click="communityJoin(community)">
+										<span ng-if="community.isjoin == 0">JOIN</span><span ng-if="community.isjoin != 0">DISJOIN</span>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</ion-content>
+	<div class="tabs tabs-icon-top footer-tab">
+		<a nav-transition="none" class="tab-item" href="#/menu/news-main">
+			<i class="icon tab-icon-newsfeed"></i>
+			NEWSFEED
+		</a>
+		<a nav-transition="none" class="tab-item" href="#/menu/explore">
+			<i class="icon tab-icon-explore"></i>
+			EXPLORE
+		</a>
+		<div nav-transition="none" class="tab-item" ng-click="launchChatNow()">
+			<i class="icon tab-icon-chat"></i>
+			CHAT
+			<!-- <span class="badge badge-stable header-badge">10</span> -->
+		</div>
+		<a nav-transition="none" class="tab-item" href="#/menu/notifications">
+			<i class="icon tab-icon-notifications"></i>
+			NOTIFICATIONS
+			<span class="badge badge-stable header-badge"></span>
+		</a>
+		<a nav-transition="none" class="tab-item" href="#/menu/profile/{{userInfo.userId}}">
+			<i class="icon tab-icon-profile"></i>
+			PROFILE
+		</a>
+	</div>
+</ion-view>

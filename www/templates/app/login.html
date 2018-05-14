@@ -1,0 +1,82 @@
+<ion-view class="login-register-bg">
+	<ion-content class="has-footer container">
+		<div class="text-center app-logo">
+			<img class="full-img" src="img/logo-2.png" />
+		</div>
+		<div class="heading-boarder"></div>
+		<div class="text-center">
+			<h3 class="uppercase">login</h3>
+		</div>
+		<form class="main-form" name="loginForm" novalidate>
+			<div class="row no-padding">
+				<div class="col col-20 icon-col no-padding text-center">
+					<img class="input-icon" src="img/icon-avtar-white.png" />
+				</div>
+				<div class="col no-padding">
+					<input type="text" name="email" ng-model="loginData.email" placeholder="USERNAME" required />
+					<p class="validation-error" ng-show="submitted && loginForm.email.$error.required">This field is required.</p>
+				</div>
+			</div>
+			<div class="row no-padding">
+				<div class="col col-20 icon-col no-padding text-center">
+					<img class="input-icon" src="img/icon-lock-white.png" />
+				</div>
+				<div class="col no-padding">
+					<input type="password" name="password" ng-model="loginData.pwd" placeholder="PASSWORD" ng-minlength="6" required />
+					<p class="validation-error" ng-show="submitted && loginForm.password.$error.required">Password is required.</p>
+					<p class="validation-error" ng-show="submitted && !loginForm.password.$error.required && loginForm.password.$error.minlength">Password must be longer than 6 characters.</p>
+				</div>
+			</div>
+			<div class="button-section">
+				<button class="button button-full button-green uppercase" ng-click="login(loginData, loginForm.$invalid)">
+					login
+				</button>
+			</div>
+		</form>
+		<div class="text-center">
+			<button class="button forget-button button-clear button-green uppercase" ng-click="goTo('app.forgot-password', {})">
+				Forgot Password? Click Here!
+			</button>
+		</div>
+		<div class="devider-row">
+			<p class="text-center">
+				<span class="text-round">OR</span>
+			</p>
+		</div>
+		<div class="row button-row fb-button no-padding">
+			<div class="col col-20 image-col text-center no-padding">
+				<img src="img/icon-fb-white.png" />
+			</div>
+			<div class="col text-center text-col no-padding">
+				<p class="uppercase">Sign in with Facebook</p>
+			</div>
+		</div>
+		<div class="row button-row gplus-button no-padding">
+			<div class="col col-20 image-col text-center no-padding">
+				<img src="img/icon-gplus-white.png" />
+			</div>
+			<div class="col text-center text-col no-padding">
+				<p class="uppercase">Sign in with GOOGLE+</p>
+			</div>
+		</div>
+		<div class="row button-row twitch-button no-padding">
+			<div class="col col-20 image-col text-center no-padding">
+				<img src="img/icon-twitch-white.png" />
+			</div>
+			<div class="col text-center text-col no-padding">
+				<p class="uppercase">Sign in with TWITCH</p>
+			</div>
+		</div>
+		<div class="row button-row steam-button no-padding">
+			<div class="col col-20 image-col text-center no-padding">
+				<img src="img/icon-steam-white.png" />
+			</div>
+			<div class="col text-center text-col no-padding">
+				<p class="uppercase">Sign in with Steam</p>
+			</div>
+		</div>
+	</ion-content>
+	<div class="bar bar-footer bar-transparent hide-on-keyboard-open" ng-click="goTo('menu.interests', {})">
+		<div class="title">SKIP</div>
+	</div>
+</ion-view>

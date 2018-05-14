@@ -1,0 +1,194 @@
+<ion-view view-title="EXPLORE">
+	<div class="bar bar-subheader">
+		<div class="item item-input-inset seach-box" style="width: 100%;">
+			<label class="item-input-wrapper">
+				<input type="text" placeholder="Enter your search term" name="searchstring" ng-model="searchData.searchstring">
+			</label>
+			<button class="button button-small button-icon icon ion-ios-search-strong" ng-class="view == 'search' ? 'active' : ''" ng-click="getSearchResult(searchData)"></button>
+		</div>
+	</div>
+
+	<ion-content class="has-big-subheader has-tabs has-custom-tab main-content profile-content">
+		<div class="container">
+			<div class="margin">
+				<div class="header-text text-center">
+					<h4 ng-if="view == 'recommendations'" class="text-white" style="margin-bottom: 0;">Recommendations</h4>
+					<h4 ng-if="view == 'preferences'" class="text-white" style="margin-bottom: 0;">Preferences</h4>
+					<h4 ng-if="view == 'search'" class="text-white" style="margin-bottom: 0;">Search</h4>
+				</div>
+			</div>
+			<div class="margin">
+
+				<ul class="button-tab text-center">
+					<li class="tab-button dark-button" style="width: 42vw;" ng-class="view == 'preferences' ? 'active' : ''" ng-click="toggleView('preferences')">
+						YOUR PREFERENCE
+					</li>
+					<li class="tab-button dark-button" style="width: 42vw;" ng-class="view == 'recommendations' ? 'active' : ''" ng-click="toggleView('recommendations')">
+						OUR RECOMMENDATIONS
+					</li>
+				</ul>
+
+			</div>
+		</div>
+
+		<div class="grid-menu-container">
+			<div ng-if="view == 'preferences'">
+				<ul vertilize-container class="grid-menu-list margin1">
+					<li vertilize class="grid-menu-item explore" ng-repeat="(type, recommndation) in recommndations" ng-if="recommndation.length > 0">
+						<div ng-if="type == 'game'">
+							<div class="menu-image" lazy-img="{{imgBasePath + recommndation[0].GameCoverImage}}" lazy-img-error='img/friend-img.jpg'
+							 style="background-position: center; background-size: cover;" ng-click="goTo('menu.game-view', {gameId: recommndation[0].GameID})">
+							</div>
+							<p class="item-title">Most Popular Game</p>
+							<p class="uppercase sub-title">{{recommndation[0].GameTitle}}</p>
+							<br/>
+						</div>
+						<div ng-if="type == 'player'">
+							<div class="menu-image" lazy-img="{{imgBasePath + recommndation[0].UserProfileImage}}" lazy-img-error='img/friend-img.jpg'
+							 style="background-position: center; background-size: cover;" ng-click="goTo('menu.profile', {userId: recommndation[0].id})">
+							</div>
+							<p class="item-title">Most Popular Player</p>
+							<p class="uppercase sub-title">{{recommndation[0].username}}</p>
+							<br/>
+						</div>
+						<div ng-if="type == 'event'">
+							<div class="menu-image" lazy-img="{{imgBasePath + recommndation[0].EventCoverImage}}" lazy-img-error='img/friend-img.jpg'
+							 style="background-position: center; background-size: cover;" ng-click="goTo('menu.event-view', {eventId: recommndation[0].EventID})">
+							</div>
+							<p class="item-title">Most Popular Event</p>
+							<p class="uppercase sub-title">{{recommndation[0].EventTitle}}</p>
+							<br/>
+						</div>
+						<div ng-if="type == 'tournament'">
+							<div class="menu-image" lazy-img="{{imgBasePath + recommndation[0].TournamentCoverImage}}" lazy-img-error='img/friend-img.jpg'
+							 style="background-position: center; background-size: cover;" ng-click="goTo('menu.tournament-view', {tournamentId: recommndation[0].TournamentID})">
+							</div>
+							<p class="item-title">Most Popular Tournament</p>
+							<p class="uppercase sub-title">{{recommndation[0].TournamentTitle}}</p>
+							<br/>
+						</div>
+						<div ng-if="type == 'community'">
+							<div class="menu-image" lazy-img="{{imgBasePath + recommndation[0].CommunityCoverImage}}" lazy-img-error='img/friend-img.jpg'
+							 style="background-position: center; background-size: cover;" ng-click="goTo('menu.community-view', {communityId: recommndation[0].CommunityID})">
+							</div>
+							<p class="item-title">Most Popular Community</p>
+							<p class="uppercase sub-title">{{recommndation[0].CommunityTitle}}</p>
+							<br/>
+						</div>
+						<div ng-if="type == 'team'">
+							<div class="menu-image" lazy-img="{{imgBasePath + recommndation[0].TeamCoverImage}}" lazy-img-error='img/friend-img.jpg'
+							 style="background-position: center; background-size: cover;" ng-click="goTo('menu.team-view', {teamId: recommndation[0].TeamID})">
+							</div>
+							<p class="item-title">Most Popular Team</p>
+							<p class="uppercase sub-title">{{recommndation[0].TeamName}}</p>
+							<br/>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<div ng-if="view == 'recommendations'">
+
+
+				<ul vertilize-container class="grid-menu-list margin1">
+					<li vertilize class="grid-menu-item explore" ng-repeat="(type, preference) in preferences" ng-if="preference.length > 0 && type != 'video'">
+						<div ng-if="type == 'game'">
+							<div class="menu-image" lazy-img="{{imgBasePath + preference[0].GameCoverImage}}" lazy-img-error='img/friend-img.jpg' style="background-position: center; background-size: cover;"
+							 ng-click="goTo('menu.game-view', {gameId: preference[0].GameID})">
+							</div>
+							<p class="item-title">Most Popular Game</p>
+							<p class="uppercase sub-title">{{preference[0].GameTitle}}</p>
+							<br/>
+						</div>
+						<div ng-if="type == 'meme'">
+							<div class="menu-image" lazy-img="{{imgBasePath + preference[0].PhotoImageName}}" lazy-img-error='img/friend-img.jpg' style="background-position: center; background-size: cover;">
+							</div>
+							<p class="item-title">Most Popular Meme</p>
+							<p class="uppercase sub-title">{{preference[0].PhotoName}}</p>
+							<br/>
+						</div>
+						<div ng-if="type == 'player'">
+							<div class="menu-image" lazy-img="{{imgBasePath + preference[0].UserProfileImage}}" lazy-img-error='img/friend-img.jpg' style="background-position: center; background-size: cover;"
+							 ng-click="goTo('menu.profile', {userId: preference[0].id})">
+							</div>
+							<p class="item-title">Most Popular Player</p>
+							<p class="uppercase sub-title">{{preference[0].username}}</p>
+							<br/>
+						</div>
+						<div ng-if="type == 'event'">
+							<div class="menu-image" lazy-img="{{imgBasePath + preference[0].EventCoverImage}}" lazy-img-error='img/friend-img.jpg' style="background-position: center; background-size: cover;"
+							 ng-click="goTo('menu.event-view', {eventId: preference[0].EventID})">
+							</div>
+							<p class="item-title">Most Popular Event</p>
+							<p class="uppercase sub-title">{{preference[0].EventTitle}}</p>
+							<br/>
+						</div>
+						<div ng-if="type == 'tournament'">
+							<div class="menu-image" lazy-img="{{imgBasePath + preference[0].TournamentCoverImage}}" lazy-img-error='img/friend-img.jpg'
+							 style="background-position: center; background-size: cover;" ng-click="goTo('menu.tournament-view', {tournamentId: preference[0].TournamentID})">
+							</div>
+							<p class="item-title">Most Popular Tournament</p>
+							<p class="uppercase sub-title">{{preference[0].TournamentTitle}}</p>
+							<br/>
+						</div>
+						<div ng-if="type == 'community'">
+							<div class="menu-image" lazy-img="{{imgBasePath + preference[0].CommunityCoverImage}}" lazy-img-error='img/friend-img.jpg'
+							 style="background-position: center; background-size: cover;" ng-click="goTo('menu.community-view', {communityId: preference[0].CommunityID})">
+							</div>
+							<p class="item-title">Most Popular Community</p>
+							<p class="uppercase sub-title">{{preference[0].CommunityTitle}}</p>
+							<br/>
+						</div>
+						<div ng-if="type == 'team'">
+							<div class="menu-image" lazy-img="{{imgBasePath + preference[0].TeamCoverImage}}" lazy-img-error='img/friend-img.jpg' style="background-position: center; background-size: cover;"
+							 ng-click="goTo('menu.team-view', {teamId: preference[0].TeamID})">
+							</div>
+							<p class="item-title">Most Popular Team</p>
+							<p class="uppercase sub-title">{{preference[0].TeamName}}</p>
+							<br/>
+						</div>
+					</li>
+				</ul>
+				<!-- noddy was here -->
+
+
+			</div>
+			<div class="grid-menu-container">
+				<div ng-if="view == 'search'">
+
+					<ul vertilize-container class="grid-menu-list">
+						<li vertilize class="grid-menu-item explore" ng-repeat="trending in trendings">
+
+							<p class="item-title">Title</p>
+							<p class="uppercase sub-title">{{trendings[1].title}}</p>
+
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</ion-content>
+	<div class="tabs tabs-icon-top footer-tab">
+		<a nav-transition="none" class="tab-item" href="#/menu/news-main">
+			<i class="icon tab-icon-newsfeed"></i>
+			NEWSFEED
+		</a>
+		<a nav-transition="none" class="tab-item active" href="#/menu/explore">
+			<i class="icon tab-icon-explore"></i>
+			EXPLORE
+		</a>
+		<div nav-transition="none" class="tab-item" ng-click="launchChatNow()">
+			<i class="icon tab-icon-chat"></i>
+			CHAT
+			<!-- <span class="badge badge-stable header-badge">10</span> -->
+		</div>
+		<a nav-transition="none" class="tab-item" href="#/menu/notifications">
+			<i class="icon tab-icon-notifications"></i>
+			NOTIFICATIONS
+			<span class="badge badge-stable header-badge"></span>
+		</a>
+		<a nav-transition="none" class="tab-item" href="#/menu/profile/{{userInfo.userId}}">
+			<i class="icon tab-icon-profile"></i>
+			PROFILE
+		</a>
+	</div>
+</ion-view>

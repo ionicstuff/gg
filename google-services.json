@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "895738644794",
+    "firebase_url": "https://gamegod-a9d41.firebaseio.com",
+    "project_id": "gamegod-a9d41",
+    "storage_bucket": "gamegod-a9d41.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:895738644794:android:710ddcfae1a7ac22",
+        "android_client_info": {
+          "package_name": "com.ionicframework.gamegod120607"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "895738644794-1dms1i66cqf2jap7nk6ehn851di7idse.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ionicframework.gamegod120607",
+            "certificate_hash": "fe2dc5fb2575f3ee8ad417d6795a88fd1ed4f872"
+          }
+        },
+        {
+          "client_id": "895738644794-dhppfoa06ubadh9ndvf53m06nhmv327v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDLhsVkQYTGzWw_-wYGUway6JbFB5sdpaI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "895738644794-dhppfoa06ubadh9ndvf53m06nhmv327v.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

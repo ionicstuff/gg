@@ -1,0 +1,147 @@
+<ion-view view-title="ADD NEW GAME">
+	<div class="bar bar-subheader">
+		<button class="button icon-left ion-android-arrow-back button-clear button-custom" ng-click="goBack()">Back</button>
+	</div>
+	<ion-content class="has-big-subheader has-tabs has-custom-tab main-content profile-content">
+		<div class="container margin">
+			<form class="general-form" name="addGameForm">
+				<div class="list">
+					<label class="item item-input item-stacked-label">
+						<span class="input-label main-label">Game Title</span>
+						<span class="input-label small-label">Your game will be known as this.</span>
+						<input type="text" name="gametitle" ng-model="game.gametitle" required />
+						<p class="validation-error" ng-show="submitted && addGameForm.gametitle.$error.required">Game title is required.</p>
+					</label>
+					<label class="item item-input item-stacked-label">
+						<span class="input-label main-label">Hashtag</span>
+						<span class="input-label small-label">Your game title for easy search</span>
+						<input type="text" name="gamehashtag" ng-model="game.gamehashtag" required />
+						<p class="validation-error" ng-show="submitted && addGameForm.gamehashtag.$error.required">Game hashtag is required.</p>
+					</label>
+					<label class="item item-input item-stacked-label">
+						<span class="input-label main-label">Game Genre</span>
+						<span class="input-label small-label">Tell us which genre your game belongs to.</span>
+						<select name="gamegenreid" ng-model="game.gamegenreid" ng-options="genre.GenreID as genre.GenreName for genre in genres" required>
+							<option value="">Select Genre</option>
+						</select>
+						<p class="validation-error" ng-show="submitted && addGameForm.gamegenreid.$error.required">Please select platform.</p>
+					</label>
+					<label class="item item-input item-stacked-label">
+						<span class="input-label main-label">Gaming Platform</span>
+						<span class="input-label small-label">Tell us which platform your game belongs to.</span>
+						<select name="gameplatformid" ng-model="game.gameplatformid" ng-options="platform.id as platform.text for platform in platforms" required>
+							<option value="">Select Platform</option>
+						</select>
+						<p class="validation-error" ng-show="submitted && addGameForm.gameplatformid.$error.required">Please select platform.</p>
+					</label>
+					<label class="item item-input item-stacked-label">
+						<span class="input-label main-label">About the Game</span>
+						<span class="input-label small-label">A brief description about the game.</span>
+						<textarea rows="4" name="gameabout" ng-model="game.gameabout"></textarea>
+					</label>
+					<div class="item item-input item-stacked-label">
+						<span class="input-label main-label">Game News</span>
+						<span class="input-label small-label">A brief description about the game news.</span>
+						<div class="row no-padding" ng-repeat="(key, value) in game.newslist">
+							<div class="col col-90">
+								<input ng-model="value.news" type="text" />
+							</div>
+							<div class="col col-10">
+								<div class="remove-input-btn" ng-if="!$last" ng-click="removeElement($index, game.newslist)"></div>
+								<div class="add-input-btn" ng-if="$last" ng-click="addElement(game.newslist, {news: ''})"></div>
+							</div>
+						</div>
+					</div>
+					<label class="item item-input item-stacked-label">
+						<span class="input-label main-label">Game Guide</span>
+						<span class="input-label small-label">A brief description on how to play the game.</span>
+						<textarea rows="4" name="gameguide" ng-model="game.gameguide"></textarea>
+					</label>
+					<div class="item item-input item-stacked-label">
+						<span class="input-label main-label">Game Videos</span>
+						<span class="input-label small-label">Add video links from sites like Youtube and Twitch</span>
+						<div class="row no-padding" ng-repeat="(key, value) in game.videolist">
+							<div class="col col-90">
+								<input ng-model="value.video" type="text" />
+							</div>
+							<div class="col col-10">
+								<div class="remove-input-btn" ng-if="!$last" ng-click="removeElement($index, game.videolist)"></div>
+								<div class="add-input-btn" ng-if="$last" ng-click="addElement(game.videolist, {video: ''})"></div>
+							</div>
+						</div>
+					</div>
+					<label class="item item-input item-stacked-label text-center">
+						<button class="form-action with-image">
+							<img src="img/icon-button-video.png" /> ADD VIDEOS FROM GALLERY
+						</button>
+					</label>
+					<div class="item item-input item-stacked-label">
+						<span class="input-label main-label">Game Cover Image</span>
+						<div class="row no-padding">
+							<div class="col col-50 text-center">
+								<button class="form-action with-image" ng-click="captureImage('GameCoverImage', 900, 300)">
+									<img src="img/icon-camera-green.png" /> CAMERA
+								</button>
+							</div>
+							<div class="col col-50 text-center">
+								<button class="form-action with-image" ng-click="selectImage('GameCoverImage', 900, 300)">
+									<img src="img/icon-menu-photos.png" /> GALLERY
+								</button>
+							</div>
+						</div>
+						<div ng-if="game.GameCoverImage">
+							<img ng-src="{{game.GameCoverImage}}" style="height: 80px; width: 200px;" />
+						</div>
+					</div>
+					<div class="item item-input item-stacked-label">
+						<span class="input-label main-label">Game Logo Image</span>
+						<div class="row no-padding">
+							<div class="col col-50 text-center">
+								<button class="form-action with-image" ng-click="captureImage('GameLogoImage', 300, 300)">
+									<img src="img/icon-camera-green.png" /> CAMERA
+								</button>
+							</div>
+							<div class="col col-50 text-center">
+								<button class="form-action with-image" ng-click="selectImage('GameLogoImage', 300, 300)">
+									<img src="img/icon-menu-photos.png" /> GALLERY
+								</button>
+							</div>
+						</div>
+						<div ng-if="game.GameLogoImage">
+							<img ng-src="{{game.GameLogoImage}}" style="height: 80px; width: 80px;" />
+						</div>
+					</div>
+					<label class="item item-input item-stacked-label">
+						<button class="button button-block button-black" ng-click="addGame(game, addGameForm.$invalid)">
+							ADD GAME
+						</button>
+					</label>
+				</div>
+			</form>
+		</div>
+	</ion-content>
+	<div class="tabs tabs-icon-top footer-tab">
+		<a nav-transition="none" class="tab-item" href="#/menu/news-main">
+			<i class="icon tab-icon-newsfeed"></i>
+			NEWSFEED
+		</a>
+		<a nav-transition="none" class="tab-item" href="#/menu/explore">
+			<i class="icon tab-icon-explore"></i>
+			EXPLORE
+		</a>
+		<div nav-transition="none" class="tab-item" ng-click="launchChatNow()">
+			<i class="icon tab-icon-chat"></i>
+			CHAT
+			<!-- <span class="badge badge-stable header-badge">10</span> -->
+		</div>
+		<a nav-transition="none" class="tab-item" href="#/menu/notifications">
+			<i class="icon tab-icon-notifications"></i>
+			NOTIFICATIONS
+			<span class="badge badge-stable header-badge"></span>
+		</a>
+		<a nav-transition="none" class="tab-item" href="#/menu/profile/{{userInfo.userId}}">
+			<i class="icon tab-icon-profile"></i>
+			PROFILE
+		</a>
+	</div>
+</ion-view>

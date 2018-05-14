@@ -1,0 +1,62 @@
+{
+  "name": "gamegod",
+  "version": "1.1.1",
+  "description": "gamegod: An Ionic project",
+  "devDependencies": {
+    "gulp": "^3.5.6",
+    "gulp-clean-css": "^3.7.0",
+    "gulp-rename": "^1.2.0",
+    "gulp-sass": "^3.1.0"
+  },
+  "cordovaPlugins": [
+    "cordova-plugin-whitelist",
+    "cordova-plugin-statusbar",
+    "cordova-plugin-console",
+    "cordova-plugin-device",
+    "cordova-plugin-splashscreen",
+    "ionic-plugin-keyboard"
+  ],
+  "cordovaPlatforms": [],
+  "cordova": {
+    "plugins": {
+      "ionic-plugin-keyboard": {},
+      "cordova-plugin-whitelist": {},
+      "cordova-plugin-console": {},
+      "cordova-plugin-statusbar": {},
+      "cordova-plugin-device": {},
+      "cordova-plugin-splashscreen": {},
+      "cordova-plugin-x-toast": {},
+      "cordova-plugin-keyboard": {},
+      "cordova-plugin-image-picker": {},
+      "cordova-plugin-file": {},
+      "cordova-plugin-file-transfer": {},
+      "cordova-plugin-camera": {},
+      "cordova-plugin-geolocation": {},
+      "cordova.plugins.diagnostic": {},
+      "cordova-plugin-cccometchat": {}
+    },
+    "platforms": [
+      "android"
+    ]
+  },
+  "dependencies": {
+    "CometChat": "file:../cometchat-plugin/CCCometChat",
+    "cordova-android": "^6.3.0",
+    "cordova-plugin-camera": "^4.0.2",
+    "cordova-plugin-cccometchat": "^7.0.1-0.6",
+    "cordova-plugin-compat": "^1.2.0",
+    "cordova-plugin-console": "1.0.5",
+    "cordova-plugin-device": "1.1.4",
+    "cordova-plugin-file": "^4.3.3",
+    "cordova-plugin-file-transfer": "^1.6.3",
+    "cordova-plugin-geolocation": "^4.0.1",
+    "cordova-plugin-image-picker": "git+https://github.com/mirulumam/cordova-imagePicker.git",
+    "cordova-plugin-keyboard": "^1.2.0",
+    "cordova-plugin-splashscreen": "~4.0.1",
+    "cordova-plugin-statusbar": "2.2.1",
+    "cordova-plugin-whitelist": "1.3.1",
+    "cordova-plugin-x-toast": "^2.6.0",
+    "cordova.plugins.diagnostic": "^4.0.4",
+    "ionic-plugin-keyboard": "~2.2.1"
+  }
+}

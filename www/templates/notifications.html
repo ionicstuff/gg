@@ -1,0 +1,58 @@
+<ion-view view-title="NOTIFICATION CENTER">
+	<div class="bar bar-subheader notification-actions">
+		<div class="item item-input-inset seach-box" style="width: 100%; height: 38px;">
+			<label class="item-input-wrapper">
+				<input class="input-icon-left bg-icon-calendar-left" ng-model="filter.onDate" type="date" placeholder="Choose a date">
+			</label>
+			<button class="button button-small button-icon icon ion-ios-search-strong"
+			ng-click="getNotifications()"></button>
+		</div>
+		<div class="row no-padding" style="margin-top: 5px;">
+			<div class="col col-10 text-center">
+				<button class="button button-clear button-custom little-big" ng-class="allSelected ? 'ion-ios-checkmark' : 'ion-ios-checkmark-outline'" ng-click="toggleSelectAll()"></button>
+			</div>
+			<div class="col sub-header-actions text-right">
+				<select ng-model="action.isReaded" ng-change="performAction(action)">
+					<option value="3">Action</option>
+					<option value="1">Read Selected</option>
+					<option value="2">Unread Selected</option>
+				</select>
+			</div>
+		</div>
+	</div>
+	<ion-content class="has-extra-big-subheader has-tabs has-custom-tab main-content profile-content">
+		<ion-list show-delete="true" class="notification-list">
+			<ion-item class="item-thumbnail-left item-text-wrap notification" ng-repeat="notification in notifications" ng-class="notification.NotificationStatus == '2' ? 'unreaded-notification' : ''">
+				<ion-delete-button class="notification-select" ng-class="isSelected(notification) ? 'ion-ios-checkmark' : 'ion-ios-checkmark-outline'" ng-click="toggleId(notification)"></ion-delete-button>
+				<img src='img/loading-img.gif' lazy-img='{{imgBasePath + notification.UserProfileImage}}' />
+				<p class="notification-title">{{notification.username}}</p>
+				<p class="notification-body">{{notification.NotificationDescription}}</p>
+				<p class="notification-time">{{getFormatedDate(notification.NotificationCreatedAt) | timeAgo}}</p>
+			</ion-item>
+		</ion-list>
+	</ion-content>
+	<div class="tabs tabs-icon-top footer-tab">
+		<a nav-transition="none" class="tab-item" href="#/menu/news-main">
+			<i class="icon tab-icon-newsfeed"></i>
+			NEWSFEED
+		</a>
+		<a nav-transition="none" class="tab-item" href="#/menu/explore">
+			<i class="icon tab-icon-explore"></i>
+			EXPLORE
+		</a>
+		<div nav-transition="none" class="tab-item" ng-click="launchChatNow()">
+			<i class="icon tab-icon-chat"></i>
+			CHAT
+			<!-- <span class="badge badge-stable header-badge">10</span> -->
+		</div>
+		<a nav-transition="none" class="tab-item active" href="#/menu/notifications">
+			<i class="icon tab-icon-notifications"></i>
+			NOTIFICATIONS
+			<span class="badge badge-stable header-badge"></span>
+		</a>
+		<a nav-transition="none" class="tab-item" href="#/menu/profile/{{userInfo.userId}}">
+			<i class="icon tab-icon-profile"></i>
+			PROFILE
+		</a>
+	</div>
+</ion-view>

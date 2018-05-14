@@ -1,0 +1,442 @@
+changes
+=======
+
+app.js
+1. menu.event-view
+2. menu.tournament-view
+
+
+New Files
+=========
+
+templates\event-view.html
+templates\tournament-view.html
+templates\tournament-brackets.html
+templates/shop-product-view.html
+
+Updated Files
+=============
+
+css\style.css
+templates\tournaments.html  => Added link to view page
+templates\events.html  => Added link to view page
+js\controllers.js  =>  Added TournamentViewCtrl
+
+
+Amenities
+35100853988
+
+Tu hai tu hai vahi dil
+
+Badan pe sitare lapete huea
+
+Janeja dhundta fir raha
+
+jeena yeha marna yeha
+
+pyar hame kis mod pe le aya
+
+kabhi alvida na kehna
+
+ajantacafe@gmail.com
+
+00000035100853988
+
+
+gamegods/gamegodssecure
+and test user credentials
+johndemon/john123
+
+BC-54-36-D1-83-A0 Nawaz Mac
+24-DA-9B-3F-C4-48 Nawaz Mobile
+AC-5A-14-B3-A4-F1 Krunal Mobile
+8C-88-2B-00-A2-41 Krunal PC
+
+B4-6D-83-54-C2-98
+
+
+'login' => 'nanosof1_nano',
+'password' => 'myinDia123',
+'database' => 'nanosof1_property',
+
+
+31582926256
+
+85951221437
+
+35100853988
+
+SBI
+
+Devidash nattha koli
+
+35816597147
+
+Vimalbai koli
+
+gamegods/gamegodssecure
+and test user credentials
+johndemon/john123
+
+Communitydetails
+=> Feed is not there
+=> Need Api to add feed
+=> Comment of feed
+=> Like Feed
+=> Experience and Level was missing
+
+
+
+
+Team List: Filters
+
+
+user_id:  logged in user id
+teamname: team tiltle
+teamblast: text about team
+teamplatformid : platform id
+
+teamtag  : tag about team
+teamwebsite : website of team
+teamisrecruitingmember : redio (if yes 1 else 0)
+TeamLogo : image
+TeamCoverImage : image
+
+
+Nathu Sonavne - 1946 - 71
+
+jatubaaben Sonavne - 1948 - 69
+
+
+user_id:  logged in user id
+gametitle :  game tiltle
+gamehashtag : game hash tag
+gamegenreid  : genre id
+gameplatformid   : platform id
+gameabout  : text
+gameguide  : text
+newslist   :[{"news":"lorem ipsum"},{"news":"lorem ipsum"},.....]
+videolist  : [{"video":"lorem ipsum"},{"video":"lorem ipsum"},.....]
+GameLogoImage  : image
+GameCoverImage  : image
+
+-> Remove about button
+-> Buttons without background and saprated by |
+
+https://gonehybrid.com/a-little-bit-of-web-scraping-in-a-hybrid-mobile-app/
+
+
+cometchat
+==========
+
+siteUrl
+www.gamegods.com
+
+apiKey
+dd934951955da17419e0d5e948bc13dc
+
+licenceKey
+RJ1GD-CM5OS-F4XTU-TE4HW-9XTJM
+
+
+AllowOverride All
+Require all granted
+
+
+ Like   Comment   Share   Pin   Flag/Report
+
+var insertOptions = {
+	'tableName' : 'configurations',
+	'itemsData' : [
+		{
+			'key' : 'last_sync',
+			'value' : currentDate,
+			'field_type' : 'text'
+		}
+	]
+};
+
+var findOptions = {
+	'type' : 'all',
+	'tableName' : 'catalog_products',
+	'limit' : 10,
+	'offset' : 0,
+	'fields' : [
+		'id',
+		'title',
+		'note'
+	],
+	'conditions' : {},
+	'order' : [
+		'catalog_products.item_code'
+	]
+};
+
+var updateOptions = {
+	'tableName' : 'configurations',
+	'itemsData' : [
+		{
+			'value' : currentDate
+		}
+	],
+	'conditions' : {
+		'key' : 'last_sync'
+	}
+};
+
+
+Inscripts-CometChat (12:22 PM):
+Hello
+DESKTOP-PSPTSOG (12:22 PM):
+Hello
+Are you aware with my issue?
+??
+Inscripts-CometChat (12:23 PM):
+yes
+You are using ionic 1 or ionic 3 ?
+DESKTOP-PSPTSOG (12:23 PM):
+Ionic 1
+Inscripts-CometChat (12:23 PM):
+Ok
+DESKTOP-PSPTSOG (12:23 PM):
+1.3.3
+Inscripts-CometChat (12:24 PM):
+Ok
+May I know the Plugin you have implemented ?
+DESKTOP-PSPTSOG (12:24 PM):
+Yes sure
+Inscripts-CometChat (12:30 PM):
+Can we run now ?
+DESKTOP-PSPTSOG (12:30 PM):
+Yes
+Inscripts-CometChat (12:34 PM):
+jus give me few minute I am building a new aar file and will provide you in few minutes
+DESKTOP-PSPTSOG (12:35 PM):
+Ok
+
+ID - johndemon
+PASSWORD - john123
+
+ID - elenaj
+PASSWORD - john123
+
+
+7) Disabling Credits
+
+8) Disabling Shop and Auction
+
+9) Disabling Polls
+
+10) Change the color of chatbox to # 262a35 and text color to be # 70f219
+15) Post button for app becomes a plane icon
+This for the App which I would like to show the client tomorrow
+
+
+keytool -exportcert -list -v -alias androiddebugkey -keystore C:\Users\Krunal-PC\.android\debug.keystore
+
+Host: www.gamegods.com
+user: developer@gamegods.com
+pass: Year2018#@
+
+
+Global / Friend news
+1. Get all comments.
+2. Add new status
+3. Like count
+4. isLike and is Pin
+
+Widgets Global News
+1. Did You Know
+2. Trending
+3. Tournaments
+4. Videos
+
+Widgets Friends News
+
+1. Birthdays
+2. Tournaments
+3. Latest Photos
+
+Widgets Games
+1. Popular PC Games
+
+Games Listing
+=============
+=> Platform change, Search by Alphabet, Search by Game Name not working
+=> How to check is game already liked?
+
+
+Game View
+=========
+=> GameCoverImage and GameLogo have wrong data please check
+=> User Ranking and Level was missing.
+=> GameNews was empty most of time (Please add in any one so I can test it)
+=> Post and it's comment, like was missing
+=> Add new post api missing
+
+Widgets Game View
+1. Ranking
+2. Game Stats
+3. Invite Friends
+
+Streams and Videos
+==================
+=> Like count, Comment count, isLike, isPin missing
+=> api to get all comments
+=> api to add new comment
+
+Team List
+=========
+=> How to check if user already liked, follow or joined to team.
+=> All searches are not working pls check
+
+Team View
+=========
+=> Team Feed missing
+=> Feed comments api missing
+=> Feed like missing
+=> Add new comment missing
+=> Add new feed missing
+
+Widgets Teams
+=============
+1. Newest Team
+2. Related Team
+
+
+Event List -> DONE
+
+Event View:
+-> going / notgoing missing
+-> Event comments and it's sub comments if any
+-> Like event comment
+-> Post new comment on event
+
+Community List
+
+
+Game list & gamelike
+-> Add islike
+
+TO START COMMETCHAT AGAIN UNCOMMENT FOLLOWING FUNCTION CODE
+$scope.launchChatNow
+
+TODO TODAY
+==========
+7. Popular games
+Url : http://www.gamegods.com/webservice/get_populargames
+Method : Post
+ Parameters :
+PNO : (page no starts from 0), user_id ,platform (platform id optional)
+ Response :
+ Success : Status -1 , msg , GameList
+Error : Status - 0 ,msg
+
+
+
+
+1. Api to Follow / Unfollow user.
+2. List of all users who followed by currently login user
+3. List of all users who are followed by currently login user
+4. Explore
+	i.  Our Recommendation
+	ii. Your Preferences
+5. Cafe Locator (Based on location)
+
+http://www.gamegods.com/webservice/readunread
+user_id,action (1 for read selected and 2 for unread selected),notificationlist([{"ID":},{"ID":}])
+
+
+followunfollow
+http://www.gamegods.com/webservice/userfollowunfollow
+parameter
+user_id,to_id
+
+followers
+http://www.gamegods.com/webservice/get_userfollowers
+parameter
+user_id
+
+followings
+http://www.gamegods.com/webservice/get_userfollowings
+user_id
+
+http://www.gamegods.com/webservice/getuserphoto to get users photo
+user_id, album_id (optional)
+
+to get user updated video
+http://www.gamegods.com/webservice/getuservideo
+user_id
+
+game liked by user
+http://www.gamegods.com/webservice/usergameliked?
+user_id
+
+to get user communities
+http://www.gamegods.com/webservice/getusercommunities
+user_id
+
+http://www.gamegods.com/webservice/getuserteams
+user_id
+
+http://www.gamegods.com/webservice/getusertournaments
+user_id
+
+http://www.gamegods.com/webservice/getuserevents
+user_id
+
+
+PENDING
+
+http://www.gamegods.com/webservice/add_album
+user_id,name,description,platform,location,date,type,AlbumImage
+user_id,name,platform,AlbumImage are compulsory
+
+http://www.gamegods.com/webservice/memeadd
+user_id,name
+
+to delete a photo of looged in user
+http://www.gamegods.com/webservice/deletephoto
+photo_id,user_id
+
+to delete album
+http://www.gamegods.com/webservice/deletealbum
+album_id,user_id
+
+to delete video
+http://www.gamegods.com/webservice/deletevideo
+video_id,user_id
+
+for deleteing meme use same phot delete api
+
+TODO
+
+http://www.gamegods.com/webservice/check_genre
+user_id
+http://www.gamegods.com/webservice/check_pltform
+user_id
+
+http://www.gamegods.com/webservice/store_genere?user_id=7&genrelist=[{"ID":},{"ID":}]
+
+http://www.gamegods.com/webservice/search_game
+text
+
+
+http://www.gamegods.com/webservice/store_platforms
+user_id=7
+platformlist=[{"ID":},{"ID":}]
+gamelist=[{"ID":},{"ID":}]
+
+
+http://www.gamegods.com/webservice/explore
+parameter text
+
+
+http://www.gamegods.com/webservice/memeadd
+user_id,memename,base_image
+
+http://www.gamegods.com/webservice/add_photo
+user_id,album_id,PhotoImages
+
+http://www.gamegods.com/webservice/videolike?user_id=7&video_id=7
+http://www.gamegods.com/webservice/comment_video?user_id=7&video_id=7&Text=hello

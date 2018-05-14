@@ -1,0 +1,178 @@
+<ion-view view-title="CREATE AN EVENT">
+	<div class="bar bar-subheader">
+		<button class="button icon-left ion-android-arrow-back button-clear button-custom" ng-click="goBack()">Back</button>
+	</div>
+	<ion-content class="has-big-subheader has-tabs has-custom-tab main-content profile-content">
+		<div class="container margin">
+			<form class="general-form" name="addEventForm" novalidate="novalidate">
+				<div class="list">
+					<label class="item item-input item-stacked-label item-text-wrap">
+						<span class="input-label small-label">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore. et dolore magna aliqua.</span>
+						<br/>
+						<span class="input-label main-label">Event Title</span>
+						<span class="input-label small-label">Your event will be known as this.</span>
+						<input name="eventtitle" type="text" ng-model="event.eventtitle" placeholder="" required />
+						<p class="validation-error" ng-show="submitted && addEventForm.eventtitle.$error.required">Event title is required.</p>
+					</label>
+					<label class="item item-input item-stacked-label">
+						<span class="input-label main-label">Event Date</span>
+						<span class="input-label small-label">Choose a date on which the event is scheduled to take place.</span>
+						<span class="input-label sub-label">Start Date</span>
+						<input name="eventstartdate" type="date" class="icon-right bg-icon-calendar" ng-model="event.eventstartdate" placeholder="" required />
+						<p class="validation-error" ng-show="submitted && addEventForm.eventstartdate.$error.required">Event start date is required.</p>
+					</label>
+					<label class="item item-input item-stacked-label">
+						<span class="input-label sub-label">End Date</span>
+						<input name="eventenddate" type="date" class="icon-right bg-icon-calendar" ng-model="event.eventenddate" placeholder="" required />
+						<p class="validation-error" ng-show="submitted && addEventForm.eventenddate.$error.required">Event end date is required.</p>
+					</label>
+					<label class="item item-input item-stacked-label">
+						<span class="input-label main-label">Event Timings</span>
+						<span class="input-label small-label">Choose timings on which the event is scheduled to take place.</span>
+						<div class="row no=padding">
+							<div class="col col-33">
+								<span class="input-label sub-label">Start Time</span>
+								<select name="fromHours" ng-model="event.fromHours" ng-options="n for n in [] | range2:1:13" required>
+									<option value="">Hours</option>
+								</select>
+								<p class="validation-error" ng-show="submitted && addEventForm.fromHours.$error.required">Select one.</p>
+								<span class="input-label small-label">Hours</span>
+							</div>
+							<div class="col col-33" style="padding-top: 33px;">
+								<select name="fromMinutes" class="text-input right-arrow" ng-model="event.fromMinutes" ng-options="n for n in [] | range2:0:60" required>
+									<option value="">Minutes</option>
+								</select>
+								<p class="validation-error" ng-show="submitted && addEventForm.fromMinutes.$error.required">Select one.</p>
+								<span class="input-label small-label">Minutes</span>
+							</div>
+							<div class="col col-33" style="padding-top: 33px;">
+								<select name="fromMeridiem" class="text-input right-arrow" ng-model="event.fromMeridiem" required>
+									<option value="">Select</option>
+									<option value="am">A.M.</option>
+									<option value="pm">P.M.</option>
+								</select>
+								<p class="validation-error" ng-show="submitted && addEventForm.fromMeridiem.$error.required">Select one.</p>
+							</div>
+						</div>
+						<div class="row no=padding">
+							<div class="col col-33">
+								<span class="input-label sub-label">End Time</span>
+								<select name="toHours" class="text-input right-arrow" ng-model="event.toHours" ng-options="n for n in [] | range2:1:13" required>
+									<option value="">Hours</option>
+								</select>
+								<p class="validation-error" ng-show="submitted && addEventForm.toHours.$error.required">Select one.</p>
+								<span class="input-label small-label">Hours</span>
+							</div>
+							<div class="col col-33" style="padding-top: 33px;">
+								<select name="toMinutes" class="text-input right-arrow" ng-model="event.toMinutes" ng-options="n for n in [] | range2:0:60" required>
+									<option value="">Minutes</option>
+								</select>
+								<p class="validation-error" ng-show="submitted && addEventForm.toMinutes.$error.required">Select one.</p>
+								<span class="input-label small-label">Minutes</span>
+							</div>
+							<div class="col col-33" style="padding-top: 33px;">
+								<select name="toMeridiem" class="text-input right-arrow" ng-model="event.toMeridiem" required>
+									<option value="">Select</option>
+									<option value="am">A.M.</option>
+									<option value="pm">P.M.</option>
+								</select>
+								<p class="validation-error" ng-show="submitted && addEventForm.toMeridiem.$error.required">Select one.</p>
+							</div>
+						</div>
+					</label>
+					<label class="item item-input item-stacked-label">
+						<span class="input-label main-label">Event Venue</span>
+						<span class="input-label small-label">Address on which the event is scheduled to take place</span>
+						<input type="text" style="margin-top: 20px;" name="eventaddress" ng-model="event.eventaddress" placeholder="Address" required />
+						<p class="validation-error" ng-show="submitted && addEventForm.eventaddress.$error.required">Map Link is required.</p>
+						<input type="url" style="margin-top: 10px;" name="eventmaplink" ng-model="event.eventmaplink" placeholder="Map Link" required />
+						<p class="validation-error" ng-show="submitted && addEventForm.eventmaplink.$error.required">Map Link is required.</p>
+						<p class="validation-error" ng-show="submitted && !addEventForm.eventmaplink.$error.required && addEventForm.eventmaplink.$error.url">Not valid url!</p>
+					</label>
+					<label class="item item-input item-stacked-label">
+						<span class="input-label main-label">Event Social Links</span>
+						<span class="input-label small-label">Add social media links for your event</span>
+						<input type="url" style="margin-top: 20px;" name="eventweblink" ng-model="event.eventweblink" placeholder="Website" />
+						<p class="validation-error" ng-show="submitted && addEventForm.eventweblink.$error.url">Not valid url!</p>
+						<input type="url" style="margin-top: 10px;" name="eventfacebooklink" ng-model="event.eventfacebooklink" placeholder="Facebook" />
+						<p class="validation-error" ng-show="submitted && addEventForm.eventfacebooklink.$error.url">Not valid url!</p>
+						<input type="url" style="margin-top: 10px;" name="eventtwitterlink" ng-model="event.eventtwitterlink" placeholder="Twitter" />
+						<p class="validation-error" ng-show="submitted && addEventForm.eventtwitterlink.$error.url">Not valid url!</p>
+						<input type="url" style="margin-top: 10px;" name="eventtwitchlink" ng-model="event.eventtwitchlink" placeholder="Twitch" />
+						<p class="validation-error" ng-show="submitted && addEventForm.eventtwitchlink.$error.url">Not valid url!</p>
+					</label>
+					<label class="item item-input item-stacked-label">
+						<span class="input-label main-label">About your Event</span>
+						<span class="input-label small-label">A brief description about your event.</span>
+						<textarea rows="4" name="eventdescription" ng-model="event.eventdescription"></textarea>
+					</label>
+					<div class="item item-input item-stacked-label">
+						<span class="input-label main-label">Event Cover Image</span>
+						<div class="row no-padding">
+							<div class="col col-50 text-center">
+								<button class="form-action with-image" ng-click="captureImage('EventCoverImage', 900, 300)">
+									<img src="img/icon-camera-green.png" /> CAMERA
+								</button>
+							</div>
+							<div class="col col-50 text-center">
+								<button class="form-action with-image" ng-click="selectImage('EventCoverImage', 900, 300)">
+									<img src="img/icon-menu-photos.png" /> GALLERY
+								</button>
+							</div>
+						</div>
+						<div ng-if="event.EventCoverImage">
+							<img ng-src="{{event.EventCoverImage}}" style="height: 80px; width: 200px;" />
+						</div>
+					</div>
+					<div class="item item-input item-stacked-label">
+						<span class="input-label main-label">Event Logo Image</span>
+						<div class="row no-padding">
+							<div class="col col-50 text-center">
+								<button class="form-action with-image" ng-click="captureImage('EventLogo', 300, 300)">
+									<img src="img/icon-camera-green.png" /> CAMERA
+								</button>
+							</div>
+							<div class="col col-50 text-center">
+								<button class="form-action with-image" ng-click="selectImage('EventLogo', 300, 300)">
+									<img src="img/icon-menu-photos.png" /> GALLERY
+								</button>
+							</div>
+						</div>
+						<div ng-if="event.EventLogo">
+							<img ng-src="{{event.EventLogo}}" style="height: 80px; width: 80px;" />
+						</div>
+					</div>
+					<label class="item item-input item-stacked-label">
+						<button class="button button-block button-black" ng-click="addEvent(event, addEventForm.$invalid)">
+							CREATE EVENT
+						</button>
+					</label>
+				</div>
+			</form>
+		</div>
+	</ion-content>
+	<div class="tabs tabs-icon-top footer-tab">
+		<a nav-transition="none" class="tab-item" href="#/menu/news-main">
+			<i class="icon tab-icon-newsfeed"></i>
+			NEWSFEED
+		</a>
+		<a nav-transition="none" class="tab-item" href="#/menu/explore">
+			<i class="icon tab-icon-explore"></i>
+			EXPLORE
+		</a>
+		<div nav-transition="none" class="tab-item" ng-click="launchChatNow()">
+			<i class="icon tab-icon-chat"></i>
+			CHAT
+			<!-- <span class="badge badge-stable header-badge">10</span> -->
+		</div>
+		<a nav-transition="none" class="tab-item" href="#/menu/notifications">
+			<i class="icon tab-icon-notifications"></i>
+			NOTIFICATIONS
+			<span class="badge badge-stable header-badge"></span>
+		</a>
+		<a nav-transition="none" class="tab-item" href="#/menu/profile/{{userInfo.userId}}">
+			<i class="icon tab-icon-profile"></i>
+			PROFILE
+		</a>
+	</div>
+</ion-view>
